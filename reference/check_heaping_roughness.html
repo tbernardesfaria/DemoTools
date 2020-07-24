@@ -206,8 +206,7 @@
                                 <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
                                 <span class='kw'>young.tail</span> <span class='kw'>=</span> <span class='st'>"Arriaga"</span>),
                 <span class='kw'>Age</span> <span class='kw'>=</span> <span class='no'>A5</span>,
-                <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='co'># not very rough, no need to smooth more</span>
+                <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_sprague() instead of sprague().</span></div><div class='input'><span class='co'># not very rough, no need to smooth more</span>
 <span class='fu'>check_heaping_roughness</span>(<span class='no'>smoothed</span>, <span class='no'>Age</span>)</div><div class='output co'>#&gt; [1] 0.05958194</div><div class='input'> <span class='co'># quite rough, even after grouping to 5-year ages</span>
 <span class='fu'>check_heaping_roughness</span>(<span class='no'>pop1m_pasex</span>, <span class='no'>Age</span>)</div><div class='output co'>#&gt; [1] 0.5530865</div><div class='input'><span class='co'># heaped, but no 0&gt;5 preference</span>
 <span class='no'>h1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='heapify.html'>heapify</a></span>(<span class='no'>smoothed</span>, <span class='no'>Age</span>, <span class='kw'>p0</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>p5</span> <span class='kw'>=</span> <span class='fl'>1</span>)

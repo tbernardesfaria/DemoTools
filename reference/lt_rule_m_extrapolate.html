@@ -345,6 +345,9 @@ function.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>mx_matrix</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>age</span> <span class='kw'>=</span> <span class='no'>x1</span>, <span class='kw'>year</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"year1"</span>, <span class='st'>"year2"</span>, <span class='st'>"year3"</span>))
 
 <span class='no'>F1</span> <span class='kw'>&lt;-</span> <span class='fu'>lt_rule_m_extrapolate</span>(<span class='no'>mx_matrix</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x1</span>, <span class='no'>x_fit</span>, <span class='no'>x_extr</span>, <span class='kw'>law</span> <span class='kw'>=</span> <span class='st'>"kannisto"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='input'><span class='no'>F1</span></div><div class='output co'>#&gt; $input
+#&gt; $input$fn_call
+#&gt; [1] "lt_rule_m_extrapolate"
+#&gt; 
 #&gt; $input$mx
 #&gt;      year
 #&gt; age    year1    year2   year3

@@ -259,7 +259,7 @@ Beers H (1945).
 <span class='no'>Value</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10000</span>,<span class='fl'>44170</span>,<span class='no'>Value</span>[-<span class='fl'>1</span>])
 <span class='no'>Age</span>   <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>,<span class='fl'>100</span>,<span class='kw'>by</span><span class='kw'>=</span><span class='fl'>5</span>)))
 
-<span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"sprague"</span>)</div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
+<span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"sprague"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_sprague() instead of sprague().</span></div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
 #&gt; 12172.4912 11380.4480 10717.4480 10171.0000  9728.6128  9377.7952  9106.0560 
 #&gt;          7          8          9         10         11         12         13 
 #&gt;  8900.9040  8749.8480  8640.3968  8573.6144  8550.5648  8490.9808  8355.2608 
@@ -288,7 +288,7 @@ Beers H (1945).
 #&gt;         91         92         93         94         95         96         97 
 #&gt;    19.9600    14.5360    10.5760     7.7824     5.8576     4.5040     3.4240 
 #&gt;         98         99        100 
-#&gt;     2.3200     0.8944     0.0000 </div><div class='input'><span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"sprague"</span>, <span class='kw'>keep0</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
+#&gt;     2.3200     0.8944     0.0000 </div><div class='input'><span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"sprague"</span>, <span class='kw'>keep0</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_sprague() instead of sprague().</span></div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
 #&gt; 12172.4912 11380.4480 10717.4480 10171.0000  9728.6128  9377.7952  9106.0560 
 #&gt;          7          8          9         10         11         12         13 
 #&gt;  8900.9040  8749.8480  8640.3968  8573.6144  8550.5648  8490.9808  8355.2608 
@@ -318,7 +318,7 @@ Beers H (1945).
 #&gt;    19.9600    14.5360    10.5760     7.7824     5.8576     4.5040     3.4240 
 #&gt;         98         99        100 
 #&gt;     2.3200     0.8944     0.0000 </div><div class='input'>
-<span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"beers(ord)"</span>)</div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
+<span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"beers(ord)"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_beers() instead of beers().</span></div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
 #&gt; 11932.7336 11342.3240 10788.6128 10280.2888  9826.0408  9435.4048  9117.0696 
 #&gt;          7          8          9         10         11         12         13 
 #&gt;  8877.1824  8717.6544  8627.6888  8582.9336  8547.1760  8479.1200  8351.8720 
@@ -347,7 +347,7 @@ Beers H (1945).
 #&gt;         91         92         93         94         95         96         97 
 #&gt;    20.1994    14.7124    10.4941     7.3540     5.1331     3.6913     2.8948 
 #&gt;         98         99        100 
-#&gt;     2.6035     2.6773     0.0000 </div><div class='input'><span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"beers(ord)"</span>, <span class='kw'>keep0</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
+#&gt;     2.6035     2.6773     0.0000 </div><div class='input'><span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"beers(ord)"</span>, <span class='kw'>keep0</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_beers() instead of beers().</span></div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
 #&gt; 10000.0000 11861.3370 11282.2886 10750.7042 10275.6703  9435.4048  9117.0696 
 #&gt;          7          8          9         10         11         12         13 
 #&gt;  8877.1824  8717.6544  8627.6888  8582.9336  8547.1760  8479.1200  8351.8720 
@@ -376,7 +376,7 @@ Beers H (1945).
 #&gt;         91         92         93         94         95         96         97 
 #&gt;    20.1994    14.7124    10.4941     7.3540     5.1331     3.6913     2.8948 
 #&gt;         98         99        100 
-#&gt;     2.6035     2.6773     0.0000 </div><div class='input'><span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"beers(ord)"</span>, <span class='kw'>keep0</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>johnson</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
+#&gt;     2.6035     2.6773     0.0000 </div><div class='input'><span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"beers(ord)"</span>, <span class='kw'>keep0</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>johnson</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_beers() instead of beers().</span></div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
 #&gt; 10000.0000 11342.3240 11462.1335 11023.6236 10341.9189  9651.0947  9097.9694 
 #&gt;          7          8          9         10         11         12         13 
 #&gt;  8762.3499  8635.8972  8627.6888  8582.9336  8547.1760  8479.1200  8351.8720 
@@ -406,7 +406,7 @@ Beers H (1945).
 #&gt;    20.1994    14.7124    10.4941     7.3540     5.1331     3.6913     2.8948 
 #&gt;         98         99        100 
 #&gt;     2.6035     2.6773     0.0000 </div><div class='input'>
-<span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"beers(mod)"</span>)</div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
+<span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"beers(mod)"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_beers() instead of beers().</span></div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
 #&gt; 11952.2354 11325.4173 10766.2996 10274.8823  9851.1654  9494.3017  9201.8161 
 #&gt;          7          8          9         10         11         12         13 
 #&gt;  8969.8051  8790.9099  8653.8682  8546.7035  8455.2302  8364.7480  8264.2114 
@@ -435,7 +435,7 @@ Beers H (1945).
 #&gt;         91         92         93         94         95         96         97 
 #&gt;    19.0789    12.9361     8.2390     4.8817     2.7712     1.8763     2.1907 
 #&gt;         98         99        100 
-#&gt;     3.7144     6.4474     0.0000 </div><div class='input'><span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"beers(mod)"</span>, <span class='kw'>keep0</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
+#&gt;     3.7144     6.4474     0.0000 </div><div class='input'><span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"beers(mod)"</span>, <span class='kw'>keep0</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_beers() instead of beers().</span></div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
 #&gt; 10000.0000 11849.1277 11264.1552 10750.0138 10306.7033  9494.3017  9201.8161 
 #&gt;          7          8          9         10         11         12         13 
 #&gt;  8969.8051  8790.9099  8653.8682  8546.7035  8455.2302  8364.7480  8264.2114 
@@ -464,7 +464,7 @@ Beers H (1945).
 #&gt;         91         92         93         94         95         96         97 
 #&gt;    19.0789    12.9361     8.2390     4.8817     2.7712     1.8763     2.1907 
 #&gt;         98         99        100 
-#&gt;     3.7144     6.4474     0.0000 </div><div class='input'><span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"beers(mod)"</span>, <span class='kw'>keep0</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>johnson</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
+#&gt;     3.7144     6.4474     0.0000 </div><div class='input'><span class='fu'>graduate</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"beers(mod)"</span>, <span class='kw'>keep0</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>johnson</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_beers() instead of beers().</span></div><div class='output co'>#&gt;          0          1          2          3          4          5          6 
 #&gt; 10000.0000 11325.4173 11441.7180 11025.7228 10377.1420  9717.5927  9184.3461 
 #&gt;          7          8          9         10         11         12         13 
 #&gt;  8850.5817  8704.3123  8653.8682  8546.7035  8455.2302  8364.7480  8264.2114 

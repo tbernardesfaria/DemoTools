@@ -173,6 +173,7 @@ y_{n+2+x} = \frac{(x+2)}{1!}\Delta y_n +
 \end{equation*}\]</span></p>
 <p>There are six observations <span class="math inline">\(Y_{n},Y_{n+1},Y_{n+2},Y_{n+3},Y_{n+4}\)</span> and <span class="math inline">\(Y_{n+5}\)</span> involved in the leading differences, $y_{n},,^5 y_n $. The interpolated points fall on curves that pass through the given points, and the interpolated subdivisions add up to the data in the original groups. To implement this method in <code>DemoTools</code>, use the function <code>graduate</code> with the option for method specified as <code>sprague</code>.</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">sprague</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/graduate.html">graduate</a></span>(<span class="no">Value</span>, <span class="no">Age</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"sprague"</span>)
+<span class="co">#&gt; Warning: please use graduate_sprague() instead of sprague().</span>
 <span class="no">single.age</span>  <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/names2age.html">names2age</a></span>(<span class="no">sprague</span>)
 
 <span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">single.age</span>, <span class="no">sprague</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">'l'</span>,
@@ -192,7 +193,9 @@ y_{n+2+x} = \frac{(x+2)}{1!}\Delta y_n +
 <a href="#beers" class="anchor"></a>Beers</h3>
 <p>Following a similar idea, Beers interpolated two overlapping curves minimizing the squares of the differences within the interpolation range <span class="citation">(H. Beers 1945)</span>. Specifically, Beers did this by minimizing fifth differences for a six-term formula, refered to as the ‘Ordinary’ Beers method <span class="citation">(H. S. Beers 1945)</span>. Subsequently, the ordinay formula was modified to relax the requirement that the given value be reproduced and yield smoother interpolated results, refered to as ‘Modified’ Beers method <span class="citation">(H. Beers 1945)</span>.</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">beers.ordinary</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/graduate.html">graduate</a></span>(<span class="no">Value</span>, <span class="no">Age</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"beers(ord)"</span>)
+<span class="co">#&gt; Warning: please use graduate_beers() instead of beers().</span>
 <span class="no">beers.modified</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/graduate.html">graduate</a></span>(<span class="no">Value</span>, <span class="no">Age</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"beers(mod)"</span>)
+<span class="co">#&gt; Warning: please use graduate_beers() instead of beers().</span>
 
 <span class="no">single.age</span>  <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/names2age.html">names2age</a></span>(<span class="no">beers.ordinary</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">single.age</span>, <span class="no">beers.ordinary</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">'l'</span>,
@@ -325,9 +328,9 @@ y_{n+2+x} = \frac{(x+2)}{1!}\Delta y_n +
                  <span class="kw">recursive</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 <span class="no">pop1resc</span>
 <span class="co">#&gt;         0         1         6         8        10        14        18        19 </span>
-<span class="co">#&gt;  92.56856 280.72883  65.11998 102.41585 306.92396 206.99140  10.45767 151.53721 </span>
+<span class="co">#&gt;  33.18833 304.56269 198.14195 173.88522 233.79972 249.63124  85.17047 213.05219 </span>
 <span class="co">#&gt;        21        24        28        31        34        37        40 </span>
-<span class="co">#&gt; 282.17343 203.82413 178.01182  72.71818 160.68775 219.86462 447.68930</span></pre></body></html></div>
+<span class="co">#&gt; 204.60044 271.86748 136.09809 178.78429 257.68570 153.50711 281.59777</span></pre></body></html></div>
 </div>
 </div>
 <div id="graduation-as-a-light-smoother" class="section level2">
