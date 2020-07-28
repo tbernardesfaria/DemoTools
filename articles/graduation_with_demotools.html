@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DemoTools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.06.02</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.07.000</span>
       </span>
     </div>
 
@@ -114,7 +114,7 @@
       <h1 data-toc-skip>Graduation with DemoTools</h1>
                         <h4 class="author">José Manuel Aburto, Ilya Kashnitsky, Monica Alexander, Jorge Cimentada, Tim Riffe</h4>
             
-            <h4 class="date">2020-07-26</h4>
+            <h4 class="date">2020-07-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/timriffe/DemoTools/blob/master/vignettes/graduation_with_demotools.Rmd"><code>vignettes/graduation_with_demotools.Rmd</code></a></small>
       <div class="hidden name"><code>graduation_with_demotools.Rmd</code></div>
@@ -173,7 +173,6 @@ y_{n+2+x} = \frac{(x+2)}{1!}\Delta y_n +
 \end{equation*}\]</span></p>
 <p>There are six observations <span class="math inline">\(Y_{n},Y_{n+1},Y_{n+2},Y_{n+3},Y_{n+4}\)</span> and <span class="math inline">\(Y_{n+5}\)</span> involved in the leading differences, $y_{n},,^5 y_n $. The interpolated points fall on curves that pass through the given points, and the interpolated subdivisions add up to the data in the original groups. To implement this method in <code>DemoTools</code>, use the function <code>graduate</code> with the option for method specified as <code>sprague</code>.</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">sprague</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/graduate.html">graduate</a></span>(<span class="no">Value</span>, <span class="no">Age</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"sprague"</span>)
-<span class="co">#&gt; Warning: please use graduate_sprague() instead of sprague().</span>
 <span class="no">single.age</span>  <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/names2age.html">names2age</a></span>(<span class="no">sprague</span>)
 
 <span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">single.age</span>, <span class="no">sprague</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">'l'</span>,
@@ -193,9 +192,7 @@ y_{n+2+x} = \frac{(x+2)}{1!}\Delta y_n +
 <a href="#beers" class="anchor"></a>Beers</h3>
 <p>Following a similar idea, Beers interpolated two overlapping curves minimizing the squares of the differences within the interpolation range <span class="citation">(H. Beers 1945)</span>. Specifically, Beers did this by minimizing fifth differences for a six-term formula, refered to as the ‘Ordinary’ Beers method <span class="citation">(H. S. Beers 1945)</span>. Subsequently, the ordinay formula was modified to relax the requirement that the given value be reproduced and yield smoother interpolated results, refered to as ‘Modified’ Beers method <span class="citation">(H. Beers 1945)</span>.</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">beers.ordinary</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/graduate.html">graduate</a></span>(<span class="no">Value</span>, <span class="no">Age</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"beers(ord)"</span>)
-<span class="co">#&gt; Warning: please use graduate_beers() instead of beers().</span>
 <span class="no">beers.modified</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/graduate.html">graduate</a></span>(<span class="no">Value</span>, <span class="no">Age</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"beers(mod)"</span>)
-<span class="co">#&gt; Warning: please use graduate_beers() instead of beers().</span>
 
 <span class="no">single.age</span>  <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/names2age.html">names2age</a></span>(<span class="no">beers.ordinary</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">single.age</span>, <span class="no">beers.ordinary</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">'l'</span>,
@@ -324,13 +321,15 @@ y_{n+2+x} = \frac{(x+2)}{1!}\Delta y_n +
                     <span class="kw">AgeInt1</span> <span class="kw">=</span> <span class="no">AgeIntRandom</span>,
                     <span class="kw">Value2</span> <span class="kw">=</span> <span class="no">pop2</span>,
                     <span class="kw">AgeInt2</span> <span class="kw">=</span> <span class="no">AgeInt5</span>,
-                    <span class="kw">splitfun</span> <span class="kw">=</span> <span class="no">splitUniform</span>,
+                    <span class="kw">splitfun</span> <span class="kw">=</span> <span class="no">graduate_uniform</span>,
                  <span class="kw">recursive</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 <span class="no">pop1resc</span>
-<span class="co">#&gt;         0         1         6         8        10        14        18        19 </span>
-<span class="co">#&gt;  86.26479 247.71533 143.16749  54.10971 174.24453 152.75161 120.15772  67.01514 </span>
-<span class="co">#&gt;        21        24        28        31        34        37        40 </span>
-<span class="co">#&gt; 295.14053 204.82148 159.17212 206.29362 140.39385 231.42217 334.86005</span></pre></body></html></div>
+<span class="co">#&gt;          0          1          6          8         10         14         18 </span>
+<span class="co">#&gt;   8.905082 255.019384  57.450943 124.434354 168.585444 247.958944  20.857274 </span>
+<span class="co">#&gt;         19         21         24         28         31         34         37 </span>
+<span class="co">#&gt;  55.521654 195.156604 192.071133 291.976993 164.321202 166.531832 213.161671 </span>
+<span class="co">#&gt;         40 </span>
+<span class="co">#&gt; 190.728129</span></pre></body></html></div>
 </div>
 </div>
 <div id="graduation-as-a-light-smoother" class="section level2">

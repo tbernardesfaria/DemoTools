@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DemoTools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.06.02</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.07.000</span>
       </span>
     </div>
 
@@ -170,16 +170,6 @@
   <span class='kw'>splitfun</span> <span class='kw'>=</span> <span class='no'>graduate_sprague</span>,
   <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='no'>...</span>
-)
-
-<span class='fu'>monoCloseout</span>(
-  <span class='no'>Value</span>,
-  <span class='no'>Age</span>,
-  <span class='no'>pops</span>,
-  <span class='kw'>pivotAge</span> <span class='kw'>=</span> <span class='fl'>90</span>,
-  <span class='kw'>splitfun</span> <span class='kw'>=</span> <span class='no'>graduate_sprague</span>,
-  <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -258,7 +248,8 @@ element of <code>Value</code> as the open age group?</p></td>
 #&gt;    19.9840    11.6080     7.6240     8.0320     7.4320     3.9040     1.8880 
 #&gt;         98         99        100 
 #&gt;     1.3840     2.3920     0.0000 </div><div class='input'><span class='co'># giving a different single-age split to close out this way:</span>
-<span class='no'>popg</span>                 <span class='kw'>&lt;-</span> <span class='fu'><a href='graduate_grabill.html'>graduate_grabill</a></span>(<span class='kw'>Value</span> <span class='kw'>=</span> <span class='no'>popvec</span>, <span class='kw'>Age</span> <span class='kw'>=</span> <span class='no'>a5</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_grabill() instead of grabill().</span></div><div class='input'><span class='no'>grabill.closed.out</span>   <span class='kw'>&lt;-</span> <span class='fu'>graduate_mono_closeout</span>(<span class='kw'>Value</span> <span class='kw'>=</span> <span class='no'>popvec</span>, <span class='kw'>Age</span> <span class='kw'>=</span> <span class='no'>a5</span>, <span class='kw'>pops</span> <span class='kw'>=</span> <span class='no'>popg</span>)
+<span class='no'>popg</span>                 <span class='kw'>&lt;-</span> <span class='fu'><a href='graduate_grabill.html'>graduate_grabill</a></span>(<span class='kw'>Value</span> <span class='kw'>=</span> <span class='no'>popvec</span>, <span class='kw'>Age</span> <span class='kw'>=</span> <span class='no'>a5</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>grabill.closed.out</span>   <span class='kw'>&lt;-</span> <span class='fu'>graduate_mono_closeout</span>(<span class='kw'>Value</span> <span class='kw'>=</span> <span class='no'>popvec</span>, <span class='kw'>Age</span> <span class='kw'>=</span> <span class='no'>a5</span>, <span class='kw'>pops</span> <span class='kw'>=</span> <span class='no'>popg</span>)
 <span class='co'># totals not necessarily preserved if mixed w Grabill</span>
 <span class='co'># I wouldn't recommend a rescale of the total, since the</span>
 <span class='co'># only part we mess with here is the old age section. Ergo,</span>
@@ -267,7 +258,8 @@ element of <code>Value</code> as the open age group?</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span>(<span class='no'>grabill.closed.out</span>) - <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span>(<span class='no'>popvec</span>)</div><div class='output co'>#&gt; [1] -22.01899</div><div class='input'><span class='co'># also works on an age-labelled vector of data</span>
 <span class='no'>closed.vec</span>           <span class='kw'>&lt;-</span> <span class='fu'>graduate_mono_closeout</span>(<span class='no'>popvec</span>, <span class='kw'>Age</span> <span class='kw'>=</span> <span class='no'>a5</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='co'># let's compare this one with sprague()</span>
-<span class='no'>simple.vec</span>           <span class='kw'>&lt;-</span> <span class='fu'><a href='graduate_sprague.html'>graduate_sprague</a></span>(<span class='no'>popvec</span>, <span class='kw'>Age</span> <span class='kw'>=</span> <span class='no'>a5</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_sprague() instead of sprague().</span></div><div class='input'><span class='co'># and with a simple monotonic spline</span>
+<span class='no'>simple.vec</span>           <span class='kw'>&lt;-</span> <span class='fu'><a href='graduate_sprague.html'>graduate_sprague</a></span>(<span class='no'>popvec</span>, <span class='kw'>Age</span> <span class='kw'>=</span> <span class='no'>a5</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='co'># and with a simple monotonic spline</span>
 <span class='no'>mono.vec</span>             <span class='kw'>&lt;-</span> <span class='fu'><a href='graduate_mono.html'>graduate_mono</a></span>(<span class='no'>popvec</span>, <span class='kw'>Age</span> <span class='kw'>=</span> <span class='no'>a5</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fl'>85</span>:<span class='fl'>100</span>,<span class='no'>simple.vec</span>[<span class='fl'>86</span>:<span class='fl'>101</span>], <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>'l'</span>,

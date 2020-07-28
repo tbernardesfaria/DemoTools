@@ -83,7 +83,7 @@ and United Nations methods." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DemoTools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.06.02</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.07.000</span>
       </span>
     </div>
 
@@ -169,19 +169,6 @@ and United Nations methods.</p>
     </div>
 
     <pre class="usage"><span class='fu'>smooth_age_5</span>(
-  <span class='no'>Value</span>,
-  <span class='no'>Age</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Carrier-Farrag"</span>, <span class='st'>"KKN"</span>, <span class='st'>"Arriaga"</span>, <span class='st'>"United Nations"</span>, <span class='st'>"Strong"</span>, <span class='st'>"Zigzag"</span>,
-    <span class='st'>"MAV"</span>),
-  <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>ageMin</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-  <span class='kw'>ageMax</span> <span class='kw'>=</span> <span class='fl'>65</span>,
-  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>young.tail</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Original"</span>, <span class='st'>"Arriaga"</span>, <span class='st'>"Strong"</span>, <span class='fl'>NA</span>),
-  <span class='kw'>old.tail</span> <span class='kw'>=</span> <span class='no'>young.tail</span>
-)
-
-<span class='fu'>agesmth</span>(
   <span class='no'>Value</span>,
   <span class='no'>Age</span>,
   <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Carrier-Farrag"</span>, <span class='st'>"KKN"</span>, <span class='st'>"Arriaga"</span>, <span class='st'>"United Nations"</span>, <span class='st'>"Strong"</span>, <span class='st'>"Zigzag"</span>,
@@ -332,7 +319,10 @@ compare the results from a variety of methods.</p>
 
 <span class='co'># it might make sense to do this level of smoothing as intermediate step</span>
 <span class='co'># in Sprague-like situation. Compare:</span>
-<span class='no'>spr1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='graduate_sprague.html'>graduate_sprague</a></span>(<span class='no'>pop1m_pasex</span>, <span class='kw'>Age</span><span class='kw'>=</span><span class='no'>Age</span>,<span class='kw'>OAG</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_sprague() instead of sprague().</span></div><div class='input'><span class='no'>spr2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='graduate_sprague.html'>graduate_sprague</a></span>(<span class='no'>cf2</span>, <span class='kw'>Age</span><span class='kw'>=</span><span class='no'>Age5</span>,<span class='kw'>OAG</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_sprague() instead of sprague().</span></div><div class='input'><span class='no'>spr3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='graduate_sprague.html'>graduate_sprague</a></span>(<span class='no'>st2</span>, <span class='kw'>Age</span><span class='kw'>=</span><span class='no'>Age5</span>,<span class='kw'>OAG</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use graduate_sprague() instead of sprague().</span></div><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>spr1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='graduate_sprague.html'>graduate_sprague</a></span>(<span class='no'>pop1m_pasex</span>, <span class='kw'>Age</span><span class='kw'>=</span><span class='no'>Age</span>,<span class='kw'>OAG</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+<span class='no'>spr2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='graduate_sprague.html'>graduate_sprague</a></span>(<span class='no'>cf2</span>, <span class='kw'>Age</span><span class='kw'>=</span><span class='no'>Age5</span>,<span class='kw'>OAG</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+<span class='no'>spr3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='graduate_sprague.html'>graduate_sprague</a></span>(<span class='no'>st2</span>, <span class='kw'>Age</span><span class='kw'>=</span><span class='no'>Age5</span>,<span class='kw'>OAG</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>Age</span>,<span class='no'>Value</span>,<span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>"Smoothing as pre-step to graduation"</span>)
 <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>Age</span>,<span class='no'>spr1</span>,<span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>2</span>)
 <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>Age</span>,<span class='no'>spr2</span>,<span class='kw'>col</span><span class='kw'>=</span><span class='st'>"blue"</span>)
