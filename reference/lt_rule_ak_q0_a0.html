@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimated life table using the log-quadratic model — lthat.logquad • DemoTools</title>
+<title>estimates a0 using the Andreev-Kingkade rule of thumb starting with IMR — lt_rule_ak_q0_a0 • DemoTools</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Estimated life table using the log-quadratic model — lthat.logquad" />
-<meta property="og:description" content="Estimated life table using the log-quadratic model" />
+<meta property="og:title" content="estimates a0 using the Andreev-Kingkade rule of thumb starting with IMR — lt_rule_ak_q0_a0" />
+<meta property="og:description" content="AKq02a0 Andreev Kingkade a0 method. This version has a 3-part segemented linear model, based on cutpoints in q0. Code ported from HMDLifeTables." />
 <meta property="og:image" content="https://timriffe.github.io/DemoTools/logo.png" />
 
 
@@ -153,47 +153,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimated life table using the log-quadratic model</h1>
-    <small class="dont-index">Source: <a href='https://github.com/timriffe/DemoTools/blob/master/R/lt_model_lq.R'><code>R/lt_model_lq.R</code></a></small>
-    <div class="hidden name"><code>lthat.logquad.Rd</code></div>
+    <h1>estimates a0 using the Andreev-Kingkade rule of thumb starting with IMR</h1>
+    <small class="dont-index">Source: <a href='https://github.com/timriffe/DemoTools/blob/master/R/lt_rule.R'><code>R/lt_rule.R</code></a></small>
+    <div class="hidden name"><code>lt_rule_ak_q0_a0.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Estimated life table using the log-quadratic model</p>
+    <p><code>AKq02a0</code> Andreev Kingkade a0 method. This version has a 3-part segemented linear model, based on cutpoints in q0. Code ported from HMDLifeTables.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lthat.logquad</span>(<span class='no'>coefs</span>, <span class='no'>x</span>, <span class='no'>q0_5</span>, <span class='no'>k</span>, <span class='no'>radix</span>, <span class='no'>Sex</span>)</pre>
+    <pre class="usage"><span class='fu'>lt_rule_ak_q0_a0</span>(<span class='no'>q0</span>, <span class='no'>Sex</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>coefs</th>
-      <td><p>Estimated coefficients</p></td>
-    </tr>
-    <tr>
-      <th>q0_5</th>
-      <td><p>5q0. The probability that a new-born will die during the 
-subsequent 5 years;</p></td>
-    </tr>
-    <tr>
-      <th>radix</th>
-      <td><p>Life table radix. Default: 10^5;</p></td>
+      <th>q0</th>
+      <td><p>a value or vector of values of q0, the death probability in the first year of life.</p></td>
     </tr>
     <tr>
       <th>Sex</th>
-      <td><p>Choose the sex of the population. This choice defines the use
-of a corresponding Log-Quadratic (<code>wilmoth</code>)
- model fitted for the whole Human Mortality Database (as of Dec 2019, 
- there are 968 life tables for each sex).
-The following options are available:</p><ul>
-<li><p><code>"b"</code> -- Both sex;</p></li>
-<li><p><code>"f"</code> -- Females;</p></li>
-<li><p><code>"m"</code> -- Males.</p></li>
-</ul></td>
+      <td><p>either "m" or "f"</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a0, the estimated average age at death of those dying in the first year of life, either a single value or a vector of a_0 values.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
