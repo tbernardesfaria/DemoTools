@@ -162,7 +162,7 @@
     <p>The resulting coefficient matrix is based on the number of rows in <code>popmat</code> where is assumed that each row of data is a 5-year age group. The final row may be an open or closed age group, as indicated by the <code>OAG</code> argument.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>graduate_sprague_expand</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>graduate_sprague_expand</span>(<span class='kw'>Value</span>, <span class='kw'>Age</span>, OAG = <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -199,10 +199,12 @@ Siegel Jacob S, Swanson David A (eds.) (2004).
 Elsevier Academic Press, California, USA, San Diego, USA.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>a5</span>           <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='no'>pop5_mat</span>))
-<span class='no'>coefsOA</span>      <span class='kw'>&lt;-</span> <span class='fu'>graduate_sprague_expand</span>(<span class='no'>pop5_mat</span>[,<span class='fl'>1</span>], <span class='kw'>Age</span> <span class='kw'>=</span> <span class='no'>a5</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>coefsclosed</span>  <span class='kw'>&lt;-</span> <span class='fu'>graduate_sprague_expand</span>(<span class='no'>pop5_mat</span>[,<span class='fl'>1</span>], <span class='kw'>Age</span> <span class='kw'>=</span> <span class='no'>a5</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>coefsOA</span>)</div><div class='output co'>#&gt; [1] 101  21</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>coefsclosed</span>)</div><div class='output co'>#&gt; [1] 105  21</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>a5</span>           <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='kw'>pop5_mat</span>))
+<span class='kw'>coefsOA</span>      <span class='op'>&lt;-</span> <span class='fu'>graduate_sprague_expand</span>(<span class='kw'>pop5_mat</span>[,<span class='fl'>1</span>], Age = <span class='kw'>a5</span>, OAG = <span class='fl'>TRUE</span>)
+<span class='kw'>coefsclosed</span>  <span class='op'>&lt;-</span> <span class='fu'>graduate_sprague_expand</span>(<span class='kw'>pop5_mat</span>[,<span class='fl'>1</span>], Age = <span class='kw'>a5</span>, OAG = <span class='fl'>FALSE</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='kw'>coefsOA</span>)
+</div><div class='output co'>#&gt; [1] 101  21</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='kw'>coefsclosed</span>)
+</div><div class='output co'>#&gt; [1] 105  21</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -218,7 +220,7 @@ Elsevier Academic Press, California, USA, San Diego, USA.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

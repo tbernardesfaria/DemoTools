@@ -162,7 +162,7 @@
     <p>Bachi's index involves applying the Whipple method repeatedly to determine the extent of preference for each final digit. Similarly to Myers', it equals the sum of the positive deviations from 10 percent. It has a theoretical range from 0 to 90, and 10 is the expected value for each digit. Two Implementations: one following the PASEX spreadsheet SINGAGE (<code>pasex = TRUE</code>), with ages hard-coded, and another with flexible upper and lower age bounds, but that does not match the PASEX implementation.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>check_heaping_bachi</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>ageMin</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>ageMax</span> <span class='kw'>=</span> <span class='fl'>79</span>, <span class='kw'>pasex</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>check_heaping_bachi</span>(<span class='kw'>Value</span>, <span class='kw'>Age</span>, ageMin = <span class='fl'>30</span>, ageMax = <span class='fl'>79</span>, pasex = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -211,10 +211,12 @@ Shryock HS, Siegel JS, Larmon EA (1973).
 US Bureau of the Census.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>Age</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>:<span class='fl'>99</span>
+    <pre class="examples"><div class='input'><span class='kw'>Age</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>99</span>
 <span class='co'># reproduces PASEX SINGAGE</span>
-<span class='fu'>check_heaping_bachi</span>(<span class='no'>pop1m_pasex</span>, <span class='no'>Age</span>, <span class='kw'>ageMin</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>ageMax</span> <span class='kw'>=</span> <span class='fl'>79</span>, <span class='kw'>pasex</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 28.96891</div><div class='input'><span class='co'># default simpler</span>
-<span class='fu'>check_heaping_bachi</span>(<span class='no'>pop1m_pasex</span>, <span class='no'>Age</span>, <span class='kw'>ageMin</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>ageMax</span> <span class='kw'>=</span> <span class='fl'>79</span>)</div><div class='output co'>#&gt; [1] 26.30127</div></pre>
+<span class='fu'>check_heaping_bachi</span>(<span class='kw'>pop1m_pasex</span>, <span class='kw'>Age</span>, ageMin = <span class='fl'>20</span>, ageMax = <span class='fl'>79</span>, pasex = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; [1] 28.96891</div><div class='input'><span class='co'># default simpler</span>
+<span class='fu'>check_heaping_bachi</span>(<span class='kw'>pop1m_pasex</span>, <span class='kw'>Age</span>, ageMin = <span class='fl'>20</span>, ageMax = <span class='fl'>79</span>)
+</div><div class='output co'>#&gt; [1] 26.30127</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -230,7 +232,7 @@ US Bureau of the Census.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

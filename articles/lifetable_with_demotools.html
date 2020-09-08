@@ -118,7 +118,7 @@
       <h1 data-toc-skip>The lifetable with DemoTools</h1>
                         <h4 class="author">José Manuel Aburto, Ilya Kashnitsky, Monica Alexander, Jorge Cimentada, Tim Riffe</h4>
             
-            <h4 class="date">2020-09-07</h4>
+            <h4 class="date">2020-09-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/timriffe/DemoTools/blob/master/vignettes/lifetable_with_demotools.Rmd"><code>vignettes/lifetable_with_demotools.Rmd</code></a></small>
       <div class="hidden name"><code>lifetable_with_demotools.Rmd</code></div>
@@ -156,27 +156,29 @@
 <h2 class="hasAnchor">
 <a href="#example-with-demotools" class="anchor"></a>Example with <code>DemoTools</code>
 </h2>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">DemoTools</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">DemoTools</span>)
 <span class="co">#&gt; Loading required package: Rcpp</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">DT</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/rstudio/DT">DT</a></span>)
 
 <span class="co">#Example witn Mexican data from UN</span>
- <span class="no">nMx</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.11621</span>,<span class="fl">0.02268</span>,<span class="fl">0.00409</span>,<span class="fl">0.00212</span>,<span class="fl">0.00295</span>,<span class="fl">0.00418</span>,<span class="fl">0.00509</span>,<span class="fl">0.00609</span>,
+ <span class="kw">nMx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.11621</span>,<span class="fl">0.02268</span>,<span class="fl">0.00409</span>,<span class="fl">0.00212</span>,<span class="fl">0.00295</span>,<span class="fl">0.00418</span>,<span class="fl">0.00509</span>,<span class="fl">0.00609</span>,
  <span class="fl">0.00714</span>,<span class="fl">0.00808</span>,<span class="fl">0.00971</span>,<span class="fl">0.0125</span>,<span class="fl">0.0175</span>,<span class="fl">0.02551</span>,<span class="fl">0.03809</span>,<span class="fl">0.05595</span>,<span class="fl">0.08098</span>,
  <span class="fl">0.15353</span>,<span class="fl">0.2557</span>)
-
- <span class="no">AgeInt</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/inferAgeIntAbr.html">inferAgeIntAbr</a></span>(<span class="kw">vec</span> <span class="kw">=</span> <span class="no">nMx</span>)
-
- <span class="no">MX.lifetable</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/lt_abridged.html">lt_abridged</a></span>(<span class="kw">nMx</span> <span class="kw">=</span> <span class="no">nMx</span>, <span class="kw">Age</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>,<span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">5</span>,<span class="fl">85</span>,<span class="kw">by</span><span class="kw">=</span><span class="fl">5</span>)), <span class="kw">AgeInt</span> <span class="kw">=</span> <span class="no">AgeInt</span>,
-                       <span class="kw">axmethod</span> <span class="kw">=</span> <span class="st">"un"</span>,<span class="kw">Sex</span> <span class="kw">=</span> <span class="st">"m"</span>,   <span class="kw">mod</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
- <span class="no">MX.lifetable</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="no">MX.lifetable</span>,<span class="fl">3</span>)
-
- <span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html">datatable</a></span>(<span class="no">MX.lifetable</span>[,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">9</span>,<span class="fl">11</span>)],
-           <span class="kw">options</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">paging</span><span class="kw">=</span><span class="fl">FALSE</span>,<span class="kw">ordering</span><span class="kw">=</span><span class="no">T</span>,<span class="kw">dom</span> <span class="kw">=</span> <span class="st">'t'</span>),
-           <span class="kw">rownames</span> <span class="kw">=</span> <span class="no">F</span>,
-           <span class="kw">caption</span> <span class="kw">=</span> <span class="st">'Lifetable for Mexican men'</span>)</pre></body></html></div>
-<div id="htmlwidget-b26dca93cd16af278670" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b26dca93cd16af278670">{"x":{"filter":"none","caption":"<caption>Lifetable for Mexican men<\/caption>","data":[[0,1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85],[0.116,0.023,0.004,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.01,0.013,0.018,0.026,0.038,0.056,0.081,0.154,0.256],[0.299,1.352,2.5,2.5,2.635,2.605,2.568,2.558,2.544,2.547,2.571,2.597,2.612,2.609,2.584,2.541,2.542,2.392,3.978],[100000,89254.258,81615.849,79963.698,79120.551,77961.608,76348.361,74429.056,72195.905,69662.928,66903.239,63729.941,59862.989,54835.08,48242.967,39829.281,30034.807,19892.804,8987.842],[10745.742,7638.409,1652.151,843.147,1158.943,1613.247,1919.305,2233.151,2532.976,2759.689,3173.298,3866.952,5027.909,6592.113,8413.686,9794.473,10142.004,10904.961,8987.842],[0.859,0.941,0.985,0.988,0.982,0.977,0.972,0.967,0.963,0.957,0.947,0.929,0.899,0.855,0.793,0.715,0.567,0.335,0],[52.597,57.893,59.185,55.356,50.919,46.637,42.567,38.599,34.713,30.883,27.052,23.271,19.606,16.165,13.017,10.221,7.725,5.368,3.978]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Age<\/th>\n      <th>nMx<\/th>\n      <th>nAx<\/th>\n      <th>lx<\/th>\n      <th>ndx<\/th>\n      <th>Sx<\/th>\n      <th>ex<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"ordering":true,"dom":"t","columnDefs":[{"className":"dt-right","targets":[0,1,2,3,4,5,6]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><p>In this output, the <code>Age</code> column indicates the lower bound of each age group. The column <code>nMx</code> are the observed death rates, usually result from dividing the deaths observed in a calendar year by the mid-year population. The <code>nAX</code>, as described above, indicates the average number of person-years lived in the age-group by those who died. The column <code>lx</code> refers to the survival function. If divided by the initial value, i.e. 100,000, indicates the probability of surviving from birth to a given age. <code>ndx</code> is the age-at-death distribution and <code>Sx</code> are the survivorship ratios. Finally, <code>ex</code> is the life expectancy. For this example, males in Mexico had a life expectancty at birth of 52.58.</p>
+ 
+ <span class="kw">AgeInt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/inferAgeIntAbr.html">inferAgeIntAbr</a></span>(vec = <span class="kw">nMx</span>)
+ 
+ <span class="kw">MX.lifetable</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/lt_abridged.html">lt_abridged</a></span>(nMx = <span class="kw">nMx</span>, Age = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>,<span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">5</span>,<span class="fl">85</span>,by=<span class="fl">5</span>)), AgeInt = <span class="kw">AgeInt</span>,
+                       axmethod = <span class="st">"un"</span>,Sex = <span class="st">"m"</span>,   mod = <span class="fl">FALSE</span>)
+ <span class="kw">MX.lifetable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="kw">MX.lifetable</span>,<span class="fl">3</span>)
+ 
+ <span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html">datatable</a></span>(<span class="kw">MX.lifetable</span>[,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">9</span>,<span class="fl">11</span>)],
+           options = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(paging=<span class="fl">FALSE</span>,ordering=<span class="kw">T</span>,dom = <span class="st">'t'</span>),
+           rownames = <span class="kw">F</span>,
+           caption = <span class="st">'Lifetable for Mexican men'</span>)
+</pre></div>
+<div id="htmlwidget-89a57653e229e3aaa6e6" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-89a57653e229e3aaa6e6">{"x":{"filter":"none","caption":"<caption>Lifetable for Mexican men<\/caption>","data":[[0,1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85],[0.116,0.023,0.004,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.01,0.013,0.018,0.026,0.038,0.056,0.081,0.154,0.256],[0.299,1.352,2.5,2.5,2.635,2.605,2.568,2.558,2.544,2.547,2.571,2.597,2.612,2.609,2.584,2.541,2.542,2.392,3.978],[100000,89254.258,81615.849,79963.698,79120.551,77961.608,76348.361,74429.056,72195.905,69662.928,66903.239,63729.941,59862.989,54835.08,48242.967,39829.281,30034.807,19892.804,8987.842],[10745.742,7638.409,1652.151,843.147,1158.943,1613.247,1919.305,2233.151,2532.976,2759.689,3173.298,3866.952,5027.909,6592.113,8413.686,9794.473,10142.004,10904.961,8987.842],[0.859,0.941,0.985,0.988,0.982,0.977,0.972,0.967,0.963,0.957,0.947,0.929,0.899,0.855,0.793,0.715,0.567,0.335,0],[52.597,57.893,59.185,55.356,50.919,46.637,42.567,38.599,34.713,30.883,27.052,23.271,19.606,16.165,13.017,10.221,7.725,5.368,3.978]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Age<\/th>\n      <th>nMx<\/th>\n      <th>nAx<\/th>\n      <th>lx<\/th>\n      <th>ndx<\/th>\n      <th>Sx<\/th>\n      <th>ex<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"ordering":true,"dom":"t","columnDefs":[{"className":"dt-right","targets":[0,1,2,3,4,5,6]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><p>In this output, the <code>Age</code> column indicates the lower bound of each age group. The column <code>nMx</code> are the observed death rates, usually result from dividing the deaths observed in a calendar year by the mid-year population. The <code>nAX</code>, as described above, indicates the average number of person-years lived in the age-group by those who died. The column <code>lx</code> refers to the survival function. If divided by the initial value, i.e. 100,000, indicates the probability of surviving from birth to a given age. <code>ndx</code> is the age-at-death distribution and <code>Sx</code> are the survivorship ratios. Finally, <code>ex</code> is the life expectancy. For this example, males in Mexico had a life expectancty at birth of 52.58.</p>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2 class="hasAnchor">
@@ -213,7 +215,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

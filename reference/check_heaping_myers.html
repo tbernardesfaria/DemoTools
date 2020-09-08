@@ -162,7 +162,7 @@
     <p>Implementation following the PASEX spreadsheet SINGAGE. Myers' measures preferences for each of the ten possible digits as a blended index. It is based on the principle that in the absence of age heaping, the aggregate population of each age ending in one of the digits 0 to 9 should represent 10 percent of the total population.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>check_heaping_myers</span>(<span class='no'>Value</span>, <span class='no'>Age</span>, <span class='kw'>ageMin</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>ageMax</span> <span class='kw'>=</span> <span class='fl'>89</span>)</pre>
+    <pre class="usage"><span class='fu'>check_heaping_myers</span>(<span class='kw'>Value</span>, <span class='kw'>Age</span>, ageMin = <span class='fl'>10</span>, ageMax = <span class='fl'>89</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -208,9 +208,11 @@ United States Census Bureau (2017).
 https://www.census.gov/data/software/pas.html, <a href='https://www.census.gov/data/software/pas.html'>https://www.census.gov/data/software/pas.html</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>Age</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>:<span class='fl'>99</span>
-<span class='fu'>check_heaping_myers</span>(<span class='no'>pop1m_pasex</span>, <span class='no'>Age</span>, <span class='fl'>10</span>, <span class='fl'>89</span>)</div><div class='output co'>#&gt; [1] 23.62787</div><div class='input'>
-<span class='fu'>check_heaping_myers</span>(<span class='no'>pop1m_pasex</span>, <span class='no'>Age</span>, <span class='fl'>10</span>, <span class='fl'>90</span>) * <span class='fl'>2</span> <span class='co'>#47.46, replicates SINGAGE males</span></div><div class='output co'>#&gt; [1] 47.25573</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>Age</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>99</span>
+<span class='fu'>check_heaping_myers</span>(<span class='kw'>pop1m_pasex</span>, <span class='kw'>Age</span>, <span class='fl'>10</span>, <span class='fl'>89</span>)
+</div><div class='output co'>#&gt; [1] 23.62787</div><div class='input'>
+<span class='fu'>check_heaping_myers</span>(<span class='kw'>pop1m_pasex</span>, <span class='kw'>Age</span>, <span class='fl'>10</span>, <span class='fl'>90</span>) <span class='op'>*</span> <span class='fl'>2</span> <span class='co'>#47.46, replicates SINGAGE males</span>
+</div><div class='output co'>#&gt; [1] 47.25573</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -226,7 +228,7 @@ https://www.census.gov/data/software/pas.html, <a href='https://www.census.gov/d
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

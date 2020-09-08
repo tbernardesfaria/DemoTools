@@ -169,14 +169,14 @@
     </div>
 
     <pre class="usage"><span class='fu'>agesmth1</span>(
-  <span class='no'>Value</span>,
-  <span class='no'>Age</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"loess"</span>,
-  <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>degree</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='no'>trans</span>,
-  <span class='kw'>pow</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='no'>...</span>
+  <span class='kw'>Value</span>,
+  <span class='kw'>Age</span>,
+  method = <span class='st'>"loess"</span>,
+  OAG = <span class='fl'>TRUE</span>,
+  degree = <span class='fl'>2</span>,
+  <span class='kw'>trans</span>,
+  pow = <span class='fl'>2</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -231,22 +231,23 @@ Predictions are only returned for the original age groups.</p>
     <div class='dont-index'><p><code><a href='https://rdrr.io/r/stats/lm.html'>lm</a></code>, <code><a href='https://rdrr.io/r/stats/loess.html'>loess</a></code> <code><a href='poly_smth1.html'>poly_smth1</a></code>, <code><a href='loess_smth1.html'>loess_smth1</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>Age</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>:<span class='fl'>99</span>
+    <pre class="examples"><div class='input'><span class='kw'>Age</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>99</span>
  <span class='co'>#cols &lt;- RColorBrewer::brewer.pal(7,"Reds")[3:7]</span>
- <span class='no'>cols</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#FC9272"</span>, <span class='st'>"#FB6A4A"</span>, <span class='st'>"#EF3B2C"</span>, <span class='st'>"#CB181D"</span>, <span class='st'>"#99000D"</span>)
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
- <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>Age</span>,<span class='no'>pop1m_pasex</span>)
- <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>Age</span>, <span class='fu'>agesmth1</span>(<span class='no'>pop1m_pasex</span>, <span class='no'>Age</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"poly"</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),<span class='kw'>col</span><span class='kw'>=</span><span class='no'>cols</span>[<span class='fl'>1</span>])
- <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>Age</span>, <span class='fu'>agesmth1</span>(<span class='no'>pop1m_pasex</span>, <span class='no'>Age</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"poly"</span>, <span class='kw'>degree</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>), <span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>cols</span>[<span class='fl'>2</span>])
- <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>Age</span>, <span class='fu'>agesmth1</span>(<span class='no'>pop1m_pasex</span>, <span class='no'>Age</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"poly"</span>, <span class='kw'>degree</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-       <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"log"</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>), <span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>cols</span>[<span class='fl'>3</span>])
- <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>Age</span>, <span class='fu'>agesmth1</span>(<span class='no'>pop1m_pasex</span>, <span class='no'>Age</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"poly"</span>, <span class='kw'>degree</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-       <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"power"</span>, <span class='kw'>pow</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>), <span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>cols</span>[<span class='fl'>4</span>])
- <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>Age</span>, <span class='fu'>agesmth1</span>(<span class='no'>pop1m_pasex</span>, <span class='no'>Age</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"poly"</span>, <span class='kw'>degree</span> <span class='kw'>=</span> <span class='fl'>4</span>,
-       <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"power"</span>, <span class='kw'>pow</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>), <span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>cols</span>[<span class='fl'>5</span>])
- <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>Age</span>, <span class='fu'>agesmth1</span>(<span class='no'>pop1m_pasex</span>, <span class='no'>Age</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"loess"</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>), <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"royalblue"</span>)
- <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>Age</span>, <span class='fu'>agesmth1</span>(<span class='no'>pop1m_pasex</span>, <span class='no'>Age</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"loess"</span>, <span class='kw'>span</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>), <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"blue"</span>)
-}</div></pre>
+ <span class='kw'>cols</span> <span class='op'>&lt;-</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#FC9272"</span>, <span class='st'>"#FB6A4A"</span>, <span class='st'>"#EF3B2C"</span>, <span class='st'>"#CB181D"</span>, <span class='st'>"#99000D"</span>)
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+ <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(<span class='kw'>Age</span>,<span class='kw'>pop1m_pasex</span>)
+ <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='kw'>Age</span>, <span class='fu'>agesmth1</span>(<span class='kw'>pop1m_pasex</span>, <span class='kw'>Age</span>, method=<span class='st'>"poly"</span>, OAG = <span class='fl'>FALSE</span>),col=<span class='kw'>cols</span>[<span class='fl'>1</span>])
+ <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='kw'>Age</span>, <span class='fu'>agesmth1</span>(<span class='kw'>pop1m_pasex</span>, <span class='kw'>Age</span>, method=<span class='st'>"poly"</span>, degree = <span class='fl'>3</span>, OAG = <span class='fl'>FALSE</span>), col = <span class='kw'>cols</span>[<span class='fl'>2</span>])
+ <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='kw'>Age</span>, <span class='fu'>agesmth1</span>(<span class='kw'>pop1m_pasex</span>, <span class='kw'>Age</span>, method=<span class='st'>"poly"</span>, degree = <span class='fl'>3</span>,
+       trans = <span class='st'>"log"</span>, OAG = <span class='fl'>FALSE</span>), col = <span class='kw'>cols</span>[<span class='fl'>3</span>])
+ <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='kw'>Age</span>, <span class='fu'>agesmth1</span>(<span class='kw'>pop1m_pasex</span>, <span class='kw'>Age</span>, method=<span class='st'>"poly"</span>, degree = <span class='fl'>3</span>,
+       trans = <span class='st'>"power"</span>, pow = <span class='fl'>2</span>, OAG = <span class='fl'>FALSE</span>), col = <span class='kw'>cols</span>[<span class='fl'>4</span>])
+ <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='kw'>Age</span>, <span class='fu'>agesmth1</span>(<span class='kw'>pop1m_pasex</span>, <span class='kw'>Age</span>, method=<span class='st'>"poly"</span>, degree = <span class='fl'>4</span>,
+       trans = <span class='st'>"power"</span>, pow = <span class='fl'>3</span>, OAG = <span class='fl'>FALSE</span>), col = <span class='kw'>cols</span>[<span class='fl'>5</span>])
+ <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='kw'>Age</span>, <span class='fu'>agesmth1</span>(<span class='kw'>pop1m_pasex</span>, <span class='kw'>Age</span>, method=<span class='st'>"loess"</span>, OAG = <span class='fl'>FALSE</span>), col = <span class='st'>"royalblue"</span>)
+ <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='kw'>Age</span>, <span class='fu'>agesmth1</span>(<span class='kw'>pop1m_pasex</span>, <span class='kw'>Age</span>, method=<span class='st'>"loess"</span>, span = <span class='fl'>1</span>, OAG = <span class='fl'>FALSE</span>), col = <span class='st'>"blue"</span>)
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -262,7 +263,7 @@ Predictions are only returned for the original age groups.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

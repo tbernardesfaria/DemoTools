@@ -163,11 +163,11 @@
     </div>
 
     <pre class="usage"><span class='fu'>smooth_age_5_zigzag_inner</span>(
-  <span class='no'>Value</span>,
-  <span class='no'>Age</span>,
-  <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>ageMin</span> <span class='kw'>=</span> <span class='fl'>40</span>,
-  <span class='kw'>ageMax</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='no'>Age</span>) - <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='no'>Age</span>)<span class='kw'>%%</span><span class='fl'>10</span> - <span class='fl'>5</span>
+  <span class='kw'>Value</span>,
+  <span class='kw'>Age</span>,
+  OAG = <span class='fl'>TRUE</span>,
+  ageMin = <span class='fl'>40</span>,
+  ageMax = <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='kw'>Age</span>) <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='kw'>Age</span>)<span class='op'>%%</span><span class='fl'>10</span> <span class='op'>-</span> <span class='fl'>5</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -206,22 +206,23 @@
     <p>Feeney, G. 2013 "Removing "Zigzag" from Age Data," http://demographer.com/white-papers/2013-removing-zigzag-from-age-data/</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>Age</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>5</span>,<span class='fl'>90</span>,<span class='kw'>by</span><span class='kw'>=</span><span class='fl'>5</span>))
+    <pre class="examples"><div class='input'><span class='kw'>Age</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>5</span>,<span class='fl'>90</span>,by=<span class='fl'>5</span>))
 <span class='co'># defaults</span>
-<span class='no'>zz1</span> <span class='kw'>&lt;-</span> <span class='fu'>smooth_age_5_zigzag_inner</span>(<span class='no'>dth5_zigzag</span>, <span class='no'>Age</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ageMin</span> <span class='kw'>=</span> <span class='fl'>40</span>, <span class='kw'>ageMax</span> <span class='kw'>=</span> <span class='fl'>80</span>)
+<span class='kw'>zz1</span> <span class='op'>&lt;-</span> <span class='fu'>smooth_age_5_zigzag_inner</span>(<span class='kw'>dth5_zigzag</span>, <span class='kw'>Age</span>, OAG = <span class='fl'>TRUE</span>, ageMin = <span class='fl'>40</span>, ageMax = <span class='fl'>80</span>)
 <span class='co'># shift age range up by 5</span>
-<span class='no'>zz2</span> <span class='kw'>&lt;-</span> <span class='fu'>smooth_age_5_zigzag_inner</span>(<span class='no'>dth5_zigzag</span>, <span class='no'>Age</span>, <span class='kw'>OAG</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ageMin</span> <span class='kw'>=</span> <span class='fl'>45</span>, <span class='kw'>ageMax</span> <span class='kw'>=</span> <span class='fl'>85</span>)
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>Age</span>, <span class='no'>dth5_zigzag</span>,<span class='kw'>pch</span> <span class='kw'>=</span> <span class='fl'>16</span>)
-<span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>Age</span>,<span class='no'>zz1</span>,<span class='kw'>col</span><span class='kw'>=</span><span class='st'>"red"</span>,<span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>1</span>)
-<span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>Age</span>,<span class='no'>zz2</span>,<span class='kw'>col</span><span class='kw'>=</span><span class='st'>"blue"</span>,<span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>1</span>)
+<span class='kw'>zz2</span> <span class='op'>&lt;-</span> <span class='fu'>smooth_age_5_zigzag_inner</span>(<span class='kw'>dth5_zigzag</span>, <span class='kw'>Age</span>, OAG = <span class='fl'>TRUE</span>, ageMin = <span class='fl'>45</span>, ageMax = <span class='fl'>85</span>)
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(<span class='kw'>Age</span>, <span class='kw'>dth5_zigzag</span>,pch = <span class='fl'>16</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='kw'>Age</span>,<span class='kw'>zz1</span>,col=<span class='st'>"red"</span>,lty=<span class='fl'>1</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='kw'>Age</span>,<span class='kw'>zz2</span>,col=<span class='st'>"blue"</span>,lty=<span class='fl'>1</span>)
 <span class='co'># even smoother:</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>Age</span>,(<span class='no'>zz2</span>+<span class='no'>zz1</span>)/<span class='fl'>2</span>,<span class='kw'>col</span><span class='kw'>=</span><span class='st'>"green"</span>,<span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>1</span>)
-<span class='fu'><a href='https://rdrr.io/r/graphics/legend.html'>legend</a></span>(<span class='st'>"bottom"</span>,<span class='kw'>pch</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>16</span>,<span class='fl'>NA</span>,<span class='fl'>NA</span>,<span class='fl'>NA</span>),
-                <span class='kw'>lty</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>,<span class='fl'>1</span>,<span class='fl'>1</span>,<span class='fl'>1</span>),
-                <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"black"</span>,<span class='st'>"red"</span>,<span class='st'>"blue"</span>,<span class='st'>"green"</span>),
-                <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Original"</span>,<span class='st'>"40-80"</span>,<span class='st'>"45-85"</span>,<span class='st'>"avg"</span>))
-}</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='kw'>Age</span>,(<span class='kw'>zz2</span><span class='op'>+</span><span class='kw'>zz1</span>)<span class='op'>/</span><span class='fl'>2</span>,col=<span class='st'>"green"</span>,lty=<span class='fl'>1</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/legend.html'>legend</a></span>(<span class='st'>"bottom"</span>,pch=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>16</span>,<span class='fl'>NA</span>,<span class='fl'>NA</span>,<span class='fl'>NA</span>),
+    lty=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>,<span class='fl'>1</span>,<span class='fl'>1</span>,<span class='fl'>1</span>),
+    col = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"black"</span>,<span class='st'>"red"</span>,<span class='st'>"blue"</span>,<span class='st'>"green"</span>),
+    legend = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Original"</span>,<span class='st'>"40-80"</span>,<span class='st'>"45-85"</span>,<span class='st'>"avg"</span>))
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -237,7 +238,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
