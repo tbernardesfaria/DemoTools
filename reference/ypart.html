@@ -162,7 +162,7 @@
     <p>The fraction returned by this is used e.g. for intercensal estimates.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ypart</span>(<span class='kw'>Year</span>, <span class='kw'>Month</span>, <span class='kw'>Day</span>, detect.mid.year = <span class='fl'>TRUE</span>, detect.start.end = <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>ypart</span><span class='op'>(</span><span class='va'>Year</span>, <span class='va'>Month</span>, <span class='va'>Day</span>, detect.mid.year <span class='op'>=</span> <span class='cn'>TRUE</span>, detect.start.end <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,16 +194,16 @@
     <p>Code inherited from HMD, slightly modified to remove matlab legacy bit.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ypart</span>(<span class='fl'>2001</span>,<span class='fl'>2</span>,<span class='fl'>14</span>) <span class='co'># general use</span>
-</div><div class='output co'>#&gt; [1] 0.1150685</div><div class='input'><span class='fu'>ypart</span>(<span class='fl'>2001</span>,<span class='fl'>6</span>,<span class='fl'>30</span>) <span class='co'># mid year options, default detection</span>
-</div><div class='output co'>#&gt; [1] 0.5</div><div class='input'><span class='fu'>ypart</span>(<span class='fl'>2001</span>,<span class='fl'>7</span>,<span class='fl'>1</span>)  <span class='co'># also</span>
-</div><div class='output co'>#&gt; [1] 0.5</div><div class='input'><span class='fu'>ypart</span>(<span class='fl'>2000</span>,<span class='fl'>6</span>,<span class='fl'>30</span>) <span class='co'># no change for leap year, still detected as mid year</span>
-</div><div class='output co'>#&gt; [1] 0.5</div><div class='input'><span class='fu'>ypart</span>(<span class='fl'>2000</span>,<span class='fl'>6</span>,<span class='fl'>30</span>, <span class='fl'>FALSE</span>) <span class='co'># exact measure</span>
-</div><div class='output co'>#&gt; [1] 0.4945355</div><div class='input'><span class='fu'>ypart</span>(<span class='fl'>2000</span>,<span class='fl'>7</span>,<span class='fl'>1</span>, <span class='fl'>FALSE</span>)  <span class='co'># July 1 leap year</span>
-</div><div class='output co'>#&gt; [1] 0.5</div><div class='input'><span class='fu'>ypart</span>(<span class='fl'>2001</span>,<span class='fl'>7</span>,<span class='fl'>1</span>, <span class='fl'>FALSE</span>)  <span class='co'># July 1 not leap year</span>
-</div><div class='output co'>#&gt; [1] 0.4986301</div><div class='input'><span class='fu'>ypart</span>(<span class='fl'>2002</span>,<span class='fl'>12</span>,<span class='fl'>31</span>, detect.start.end = <span class='fl'>FALSE</span>) <span class='co'># assumes end of day by default.</span>
-</div><div class='output co'>#&gt; [1] 1</div><div class='input'><span class='fu'>ypart</span>(<span class='fl'>2002</span>,<span class='fl'>1</span>,<span class='fl'>1</span>, detect.start.end = <span class='fl'>FALSE</span>) <span class='co'># end of day year fraction</span>
-</div><div class='output co'>#&gt; [1] 0.002739726</div><div class='input'><span class='fu'>ypart</span>(<span class='fl'>2002</span>,<span class='fl'>1</span>,<span class='fl'>1</span>, detect.start.end = <span class='fl'>TRUE</span>)  <span class='co'># assume very begining of year</span>
+    <pre class="examples"><div class='input'><span class='fu'>ypart</span><span class='op'>(</span><span class='fl'>2001</span>,<span class='fl'>2</span>,<span class='fl'>14</span><span class='op'>)</span> <span class='co'># general use</span>
+</div><div class='output co'>#&gt; [1] 0.1150685</div><div class='input'><span class='fu'>ypart</span><span class='op'>(</span><span class='fl'>2001</span>,<span class='fl'>6</span>,<span class='fl'>30</span><span class='op'>)</span> <span class='co'># mid year options, default detection</span>
+</div><div class='output co'>#&gt; [1] 0.5</div><div class='input'><span class='fu'>ypart</span><span class='op'>(</span><span class='fl'>2001</span>,<span class='fl'>7</span>,<span class='fl'>1</span><span class='op'>)</span>  <span class='co'># also</span>
+</div><div class='output co'>#&gt; [1] 0.5</div><div class='input'><span class='fu'>ypart</span><span class='op'>(</span><span class='fl'>2000</span>,<span class='fl'>6</span>,<span class='fl'>30</span><span class='op'>)</span> <span class='co'># no change for leap year, still detected as mid year</span>
+</div><div class='output co'>#&gt; [1] 0.5</div><div class='input'><span class='fu'>ypart</span><span class='op'>(</span><span class='fl'>2000</span>,<span class='fl'>6</span>,<span class='fl'>30</span>, <span class='cn'>FALSE</span><span class='op'>)</span> <span class='co'># exact measure</span>
+</div><div class='output co'>#&gt; [1] 0.4945355</div><div class='input'><span class='fu'>ypart</span><span class='op'>(</span><span class='fl'>2000</span>,<span class='fl'>7</span>,<span class='fl'>1</span>, <span class='cn'>FALSE</span><span class='op'>)</span>  <span class='co'># July 1 leap year</span>
+</div><div class='output co'>#&gt; [1] 0.5</div><div class='input'><span class='fu'>ypart</span><span class='op'>(</span><span class='fl'>2001</span>,<span class='fl'>7</span>,<span class='fl'>1</span>, <span class='cn'>FALSE</span><span class='op'>)</span>  <span class='co'># July 1 not leap year</span>
+</div><div class='output co'>#&gt; [1] 0.4986301</div><div class='input'><span class='fu'>ypart</span><span class='op'>(</span><span class='fl'>2002</span>,<span class='fl'>12</span>,<span class='fl'>31</span>, detect.start.end <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='co'># assumes end of day by default.</span>
+</div><div class='output co'>#&gt; [1] 1</div><div class='input'><span class='fu'>ypart</span><span class='op'>(</span><span class='fl'>2002</span>,<span class='fl'>1</span>,<span class='fl'>1</span>, detect.start.end <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='co'># end of day year fraction</span>
+</div><div class='output co'>#&gt; [1] 0.002739726</div><div class='input'><span class='fu'>ypart</span><span class='op'>(</span><span class='fl'>2002</span>,<span class='fl'>1</span>,<span class='fl'>1</span>, detect.start.end <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>  <span class='co'># assume very begining of year</span>
 </div><div class='output co'>#&gt; [1] 0</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

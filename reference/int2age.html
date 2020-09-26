@@ -162,7 +162,7 @@
     <p>Determine lower bounds of age classes based on a vector of age intervals and a starting age.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>int2age</span>(<span class='kw'>AgeInt</span>, ageMin = <span class='fl'>0</span>)</pre>
+    <pre class="usage"><span class='fu'>int2age</span><span class='op'>(</span><span class='va'>AgeInt</span>, ageMin <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -182,8 +182,8 @@
     <p>Age vector of same length as <code>AgeInt</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>AgeInt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>4</span>,<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>5</span>,<span class='fl'>17</span>))
-<span class='fu'>int2age</span>(<span class='kw'>AgeInt</span>)
+    <pre class="examples"><div class='input'><span class='va'>AgeInt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>4</span>,<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>5</span>,<span class='fl'>17</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>int2age</span><span class='op'>(</span><span class='va'>AgeInt</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1]  0  1  5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

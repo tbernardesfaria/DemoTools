@@ -164,7 +164,7 @@ ages 1-4 are grouped together as abridged age 1, and thereafter 5-year age group
 ages 1-4 are grouped together as abridged age 1, and thereafter 5-year age groups are used.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calcAgeAbr</span>(<span class='kw'>Age</span>)</pre>
+    <pre class="usage"><span class='fu'>calcAgeAbr</span><span class='op'>(</span><span class='va'>Age</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -184,11 +184,11 @@ ages 1-4 are grouped together as abridged age 1, and thereafter 5-year age group
 this is just the same as <code><a href='calcAgeN.html'>calcAgeN(Age,5,0)</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>Age</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>70</span>
-<span class='fu'>calcAgeAbr</span>(<span class='kw'>Age</span>)
+    <pre class="examples"><div class='input'><span class='va'>Age</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>70</span>
+<span class='fu'>calcAgeAbr</span><span class='op'>(</span><span class='va'>Age</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1]  0  1  1  1  1  5  5  5  5  5 10 10 10 10 10 15 15 15 15 15 20 20 20 20 20
 #&gt; [26] 25 25 25 25 25 30 30 30 30 30 35 35 35 35 35 40 40 40 40 40 45 45 45 45 45
-#&gt; [51] 50 50 50 50 50 55 55 55 55 55 60 60 60 60 60 65 65 65 65 65 70</div><div class='input'><span class='fu'><a href='calcAgeN.html'>calcAgeN</a></span>(<span class='kw'>Age</span>,<span class='fl'>5</span>,<span class='fl'>0</span>)
+#&gt; [51] 50 50 50 50 50 55 55 55 55 55 60 60 60 60 60 65 65 65 65 65 70</div><div class='input'><span class='fu'><a href='calcAgeN.html'>calcAgeN</a></span><span class='op'>(</span><span class='va'>Age</span>,<span class='fl'>5</span>,<span class='fl'>0</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1]  0  0  0  0  0  5  5  5  5  5 10 10 10 10 10 15 15 15 15 15 20 20 20 20 20
 #&gt; [26] 25 25 25 25 25 30 30 30 30 30 35 35 35 35 35 40 40 40 40 40 45 45 45 45 45
 #&gt; [51] 50 50 50 50 50 55 55 55 55 55 60 60 60 60 60 65 65 65 65 65 70</div></pre>
