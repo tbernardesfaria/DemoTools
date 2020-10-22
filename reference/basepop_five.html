@@ -47,7 +47,7 @@
 
 
 <meta property="og:title" content="BPA and BPE methods for adjusting age groups under 10 — basepop_five" />
-<meta property="og:description" content="Adjust population counts for the age groups 0, 1-4 and 5-9" />
+<meta property="og:description" content="Adjust population counts for the age groups 0 to 10" />
 <meta property="og:image" content="https://timriffe.github.io/DemoTools/logo.png" />
 
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DemoTools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.09.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.09.24</span>
       </span>
     </div>
 
@@ -159,89 +159,107 @@
     </div>
 
     <div class="ref-description">
-    <p>Adjust population counts for the age groups 0, 1-4 and 5-9</p>
+    <p>Adjust population counts for the age groups 0 to 10</p>
     </div>
 
     <pre class="usage"><span class='fu'>basepop_five</span><span class='op'>(</span>
+  country <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>refYear</span>,
   <span class='va'>Females_five</span>,
-  <span class='va'>SRB</span>,
-  <span class='va'>nlxFemale</span>,
-  <span class='va'>nlxDatesIn</span>,
-  <span class='va'>asfrMat</span>,
-  <span class='va'>AsfrDatesIn</span>,
+  nLxFemale <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nLxDatesIn <span class='op'>=</span> <span class='cn'>NULL</span>,
+  AsfrMat <span class='op'>=</span> <span class='cn'>NULL</span>,
+  AsfrDatesIn <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>,
-  Sex <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"f"</span>, <span class='st'>"m"</span><span class='op'>)</span>,
+  female <span class='op'>=</span> <span class='cn'>TRUE</span>,
   SmoothedFemales <span class='op'>=</span> <span class='cn'>NULL</span>,
   Males_five <span class='op'>=</span> <span class='cn'>NULL</span>,
-  nlxMale <span class='op'>=</span> <span class='cn'>NULL</span>
+  nLxMale <span class='op'>=</span> <span class='cn'>NULL</span>,
+  SRB <span class='op'>=</span> <span class='fl'>1.05</span>,
+  radix <span class='op'>=</span> <span class='cn'>NULL</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span>
 
 <span class='fu'>basepop_single</span><span class='op'>(</span>
+  country <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>refYear</span>,
   <span class='va'>Females_single</span>,
-  <span class='va'>SRB</span>,
-  <span class='va'>nlxFemale</span>,
-  <span class='va'>nlxDatesIn</span>,
-  <span class='va'>asfrMat</span>,
-  <span class='va'>AsfrDatesIn</span>,
+  nLxFemale <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nLxDatesIn <span class='op'>=</span> <span class='cn'>NULL</span>,
+  AsfrMat <span class='op'>=</span> <span class='cn'>NULL</span>,
+  AsfrDatesIn <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>,
-  Sex <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"f"</span>, <span class='st'>"m"</span><span class='op'>)</span>,
+  female <span class='op'>=</span> <span class='cn'>TRUE</span>,
   SmoothedFemales <span class='op'>=</span> <span class='cn'>NULL</span>,
   Males_single <span class='op'>=</span> <span class='cn'>NULL</span>,
-  nlxMale <span class='op'>=</span> <span class='cn'>NULL</span>
+  nLxMale <span class='op'>=</span> <span class='cn'>NULL</span>,
+  SRB <span class='op'>=</span> <span class='fl'>1.05</span>,
+  radix <span class='op'>=</span> <span class='cn'>NULL</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>country</th>
+      <td><p>The country name or location code from which to download the nLx and asfr data. See <code><a href='https://rdrr.io/pkg/fertestr/man/locs_avail.html'>fertestr::locs_avail()</a></code> for all country names/codes.</p></td>
+    </tr>
+    <tr>
       <th>refYear</th>
-      <td><p>An integer. The decimal reference year for which the reported population pertain</p></td>
+      <td><p>The reference year for which the reported population pertain (these are the population counts in <code>Females_five</code> and <code>Males_five</code>).</p></td>
     </tr>
     <tr>
       <th>Females_five</th>
-      <td><p>A named numeric vector. The names of the vector should reflect the age groups. See examples. Reported population by abridged 5-year lower bound age groups for females pertaining to <code>refYear</code>. This means that age 0 must be kept as a single age, ages 1-4 must grouped together as abridged age 1, and thereafter 5-year age groups.</p></td>
+      <td><p>A named numeric vector with the population counts for five-year abridged age groups for females in <code>refYear</code>. The names of the vector should reflect the age groups. See the example section for some examples.</p></td>
     </tr>
     <tr>
-      <th>SRB</th>
-      <td><p>A numeric. Sex ratio at birth (males / females)</p></td>
+      <th>nLxFemale</th>
+      <td><p>A numeric matrix. The female nLx function of two life tables with ages in the rows and time in columns. The earlier date should be at least 7.5 years before the reference date of the "reported" population. The later date should be no earlier than one-half year before the reference date of the "reported" population. If not provided, it's automatically downloaded if <code>country</code>, <code>refYear</code> and the equivalent population counts <code>*_five</code> are provided.</p></td>
     </tr>
     <tr>
-      <th>nlxFemale</th>
-      <td><p>A numeric matrix. The female nLx function of two life tables with ages in the rows and time in columns. The earlier date should be at least 7.5 years before the reference date of the "reported" population. The later date should be no earlier than one-half year before the reference date of the "reported" population</p></td>
+      <th>nLxDatesIn</th>
+      <td><p>A vector of numeric years (for example, 1986). The dates which pertain to the columns in <code>nLxFemale</code> and <code>nLxMale</code>. If not provided, the function automatically determines two dates which are 8 years before <code>refYear</code> and 0.5 years after <code>refYear</code>.</p></td>
     </tr>
     <tr>
-      <th>nlxDatesIn</th>
-      <td><p>Vector of dates. The dates which pertain to the columns in <code>nlxFemale</code> and <code>nlxMale</code>. For details on the format of the dates, see the details of <code><a href='interp.html'>interp</a></code></p></td>
-    </tr>
-    <tr>
-      <th>asfrMat</th>
-      <td><p>A numeric matrix. An age-period matrix of age specific fertility rates with age in rows, time in columns.</p></td>
+      <th>AsfrMat</th>
+      <td><p>A numeric matrix. An age-period matrix of age specific fertility rates with age in rows, time in columns. If not provided, the function automatically downloads the ASFR matrix based on the dates in <code>AsfrDatesIn</code>.</p></td>
     </tr>
     <tr>
       <th>AsfrDatesIn</th>
-      <td><p>A vector of dates. The dates which pertain to the columns in <code>asfrMat</code>. For details on the format of the dates, see the details of <code><a href='interp.html'>interp</a></code></p></td>
+      <td><p>A vector of numeric years (for example, 1986). These are the dates which pertain to the columns in <code>AsfrMat</code>. If not provided, the function automatically determines two dates which are 8 years before <code>refYear</code> and 0.5 before <code>refYear</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed to <code><a href='interp.html'>interp</a></code>. In particular, users might be interested in changing the interpolation method. By default, it's linearly interpolated</p></td>
+      <td><p>Arguments passed to <code><a href='interp.html'>interp</a></code>. In particular, users might be interested in changing the interpolation method for the <code>nLx*</code> matrices and the <code>Asfr</code> matrix. By default, it's linearly interpolated.</p></td>
     </tr>
     <tr>
-      <th>Sex</th>
-      <td><p>A character string. Either 'f' or 'm', for adjusting either <code>Females</code> or <code>Males</code>. See the details section for the mandatory arguments for adjusting the male counts.</p></td>
+      <th>female</th>
+      <td><p>A logical <code>TRUE</code> or <code>FALSE</code> for whether to perform the adjustment for females or males. If <code>female = FALSE</code>, <code>Males_five</code> needs to be provided.</p></td>
     </tr>
     <tr>
       <th>SmoothedFemales</th>
-      <td><p>A numeric vector. This should be the result of passing the <code>Females</code> arguments through <code>smooth_age_5</code>. It is assumed that this argument is a numeric vector with the lower bound age group definitions as names. By default, this is what <code>smooth_age_5</code> returns. See the example section for an example.</p></td>
+      <td><p>A numeric vector. This should be the result of passing the <code>Females_five</code> argument through <code>smooth_age_5</code>. It is assumed that this argument is a numeric vector with the lower bound age group definitions as names. By default, this is what <code>smooth_age_5</code> returns. See the example section for some examples.</p></td>
     </tr>
     <tr>
       <th>Males_five</th>
-      <td><p>A named numeric vector. The names of the vector should reflect the age groups. See examples. Reported population by abridged 5-year lower bound age groups for males pertaining to <code>refYear</code>. This means that age 0 must be kept as a single age, ages 1-4 must grouped together as abridged age 1, and thereafter 5-year age groups. This argument is only used when <code>Sex</code> is set to <code>"m"</code>.</p></td>
+      <td><p>A named numeric vector with the population counts for five-year abridged age groups for males in <code>refYear</code>. The names of the vector should reflect the age groups. See the example section for some examples.</p></td>
     </tr>
     <tr>
-      <th>nlxMale</th>
-      <td><p>A numeric matrix. The male nLx function of two life tables with ages in the rows and time in columns. The male nLx functions should be for age groups 0, 1 to 4, and 5 to 9. The dates which are represented in the columns are assumed to be the same as <code>nlxDatesIn</code>. This argument is only used when <code>Sex</code> is set to <code>"m"</code></p></td>
+      <th>nLxMale</th>
+      <td><p>A numeric matrix. The male nLx function of two life tables with ages in the rows and time in columns. The male nLx function should be only for age groups 0, 1 to 4, and 5 to 9. The dates which are represented in the columns are assumed to be the same as <code>nLxDatesIn</code>. This argument is only used when <code>female</code> is set to <code>FALSE</code> and <code>Males_five</code> is provided. If <code>Males_five</code> is provided and <code>female</code> set to <code>FALSE</code>, the <code>nLx</code> for males is automatically downloaded for the dates in <code>nLxDatesIn</code>.</p></td>
+    </tr>
+    <tr>
+      <th>SRB</th>
+      <td><p>A numeric. Sex ratio at birth (males / females). Default is set to 1.05</p></td>
+    </tr>
+    <tr>
+      <th>radix</th>
+      <td><p>starting point to use in the adjustment of the three first age groups. Default is NULL. If not provided, the function extracts the <code>lx</code> for age group <code>0</code> of the first year defined in <code>AsfrDatesIn</code>.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>when downloading new data, should the function print details about the download at each step? Defaults to <code>TRUE</code>. We recommend the user to set this to <code>TRUE</code> at all times because the function needs to make decisions (such as picking the dates for the Asfr and nLx) that the user should be aware of.</p></td>
     </tr>
     <tr>
       <th>Females_single</th>
@@ -256,10 +274,10 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>When using <code>basepop_five</code>, a numeric vector of adjusted counts
-for the age groups 0, 1-4 and 5-9 for either <code>Females</code> or <code>Males</code>,
-depending on whether the user specified <code>"m"</code> or <code>"f"</code> in
-<code>Sex</code>. The remaining age counts are left as is. When
-<code>basepop_single</code> is used, the return value issues a numeric vector with
+for the age groups 0, 1-4 and 5-9 for either <code>females</code> or <code>males</code>,
+depending on whether the user specified <code>TRUE</code> or <code>FALSE</code> in
+<code>female</code>. The remaining age counts are left as is. When
+<code>basepop_single</code> is used, the return value is a numeric vector with
 <strong>single year age groups</strong> where the counts between 0 and 10 are adjusted.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -268,10 +286,11 @@ BPE methods. If the user specifies <code>SmoothedFemales</code>, both <code>base
 functions will return the BPA method. If <code>SmoothedFemales</code> is left empty,
 both <code>basepop_*</code> functions will adjust using the BPE method.</p>
 <p>For <code>basepop_five</code>, adjusting the female population counts is the
-default. For this, all arguments except <code>Males_five</code> and
-<code>nlxMale</code> are needed. However, for adjusting the male population
-counts, the user needs to specify all arguments as well as <code>Males_five</code>,
-<code>nlxMale</code> and <code>nlxFemale</code> and set <code>sex == "m"</code>.</p>
+default. For this, only the <code>country</code>, <code>refYear</code> and
+<code>Females_five</code> are needed. All other arguments are downloaded
+or set to sensible defaults. For adjusting the male population
+counts, the user needs to specify the <code>Males_five</code> population
+counts and set <code>female = FALSE</code>.</p>
 <p>For <code>basepop_single</code>, the same procedure applies. The only difference
 is that the vector <code>Males_five</code> is named <code>Males_single</code> and accepts
 a vector of single ages rather than five year abridged age groups. Similarly,
@@ -279,6 +298,11 @@ the vector for females is <code>Females_single</code> rather than
 <code>Females_five</code> and accepts single age groups.</p>
 <p>Currently, <code>basepop_five</code> works only with five year abridged age groups
 while <code>basepop_single</code> works only with single year age groups.</p>
+<p>The BPE method is used by default. To adjust the counts using
+the BPA method, the user needs to provide the <code>SmoothedFemales</code>
+argument. This is the female population counts passed through
+a smoothing function such as <code>smooth_age_5</code>. See the examples
+section for some examples.</p>
     <h2 class="hasAnchor" id="bpa"><a class="anchor" href="#bpa"></a>BPA</h2>
 
     
@@ -373,6 +397,114 @@ United States Census Bureau (2017-nov).
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
  <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='co'>################ BPE for females (five year age groups) ############################</span>
+
+<span class='co'># Grab population counts for females</span>
+<span class='va'>refYear</span> <span class='op'>&lt;-</span> <span class='fl'>1986</span>
+<span class='va'>country</span> <span class='op'>&lt;-</span> <span class='st'>"Brazil"</span>
+<span class='va'>pop_female_single</span> <span class='op'>&lt;-</span> <span class='fu'>fertestr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/fertestr/man/FetchPopWpp2019.html'>FetchPopWpp2019</a></span><span class='op'>(</span><span class='va'>country</span>, <span class='va'>refYear</span>, ages <span class='op'>=</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>100</span>, sex <span class='op'>=</span> <span class='st'>"female"</span><span class='op'>)</span>
+<span class='va'>pop_female_counts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='single2abridged.html'>single2abridged</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='va'>pop_female_single</span><span class='op'>$</span><span class='va'>pop</span>, <span class='va'>pop_female_single</span><span class='op'>$</span><span class='va'>ages</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># Automatically downloads the nLx and ASFR data</span>
+<span class='va'>bpe_female</span> <span class='op'>&lt;-</span> <span class='fu'>basepop_five</span><span class='op'>(</span>
+  country <span class='op'>=</span> <span class='va'>country</span>,
+  refYear <span class='op'>=</span> <span class='va'>refYear</span>,
+  Females_five <span class='op'>=</span> <span class='va'>pop_female_counts</span>
+<span class='op'>)</span>
+
+<span class='co'># The counts for the first three age groups have been adjusted:</span>
+<span class='va'>bpe_female</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
+<span class='va'>pop_female_counts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
+
+<span class='co'>################ BPE for males (five year age groups) ###############################</span>
+
+<span class='va'>pop_male_single</span> <span class='op'>&lt;-</span> <span class='fu'>fertestr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/fertestr/man/FetchPopWpp2019.html'>FetchPopWpp2019</a></span><span class='op'>(</span><span class='va'>country</span>, <span class='va'>refYear</span>, ages <span class='op'>=</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>100</span>, sex <span class='op'>=</span> <span class='st'>"male"</span><span class='op'>)</span>
+<span class='va'>pop_male_counts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='single2abridged.html'>single2abridged</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='va'>pop_male_single</span><span class='op'>$</span><span class='va'>pop</span>, <span class='va'>pop_male_single</span><span class='op'>$</span><span class='va'>ages</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># Automatically downloads the nLx and ASFR data</span>
+<span class='va'>bpe_male</span> <span class='op'>&lt;-</span> <span class='fu'>basepop_five</span><span class='op'>(</span>
+  country <span class='op'>=</span> <span class='va'>country</span>,
+  refYear <span class='op'>=</span> <span class='va'>refYear</span>,
+  Females_five <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
+  Males_five <span class='op'>=</span> <span class='va'>pop_male_counts</span>,
+  female <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
+
+<span class='va'>bpe_male</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
+<span class='va'>pop_male_counts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
+
+<span class='co'>################ BPE for females (single ages) ############################</span>
+
+<span class='va'>pop_female_single</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='va'>pop_female_single</span><span class='op'>$</span><span class='va'>pop</span>, <span class='va'>pop_female_single</span><span class='op'>$</span><span class='va'>ages</span><span class='op'>)</span>
+
+<span class='co'># Automatically downloads the nLx and ASFR data</span>
+<span class='va'>bpe_female</span> <span class='op'>&lt;-</span> <span class='fu'>basepop_single</span><span class='op'>(</span>
+  country <span class='op'>=</span> <span class='va'>country</span>,
+  refYear <span class='op'>=</span> <span class='va'>refYear</span>,
+  Females_single <span class='op'>=</span> <span class='va'>pop_female_single</span>
+<span class='op'>)</span>
+
+<span class='co'># The counts for the first 10 age groups have been adjusted:</span>
+<span class='va'>bpe_female</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
+<span class='va'>pop_female_single</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
+
+<span class='co'>################ BPE for males (single ages) ############################</span>
+
+<span class='va'>pop_male_single</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='va'>pop_male_single</span><span class='op'>$</span><span class='va'>pop</span>, <span class='va'>pop_male_single</span><span class='op'>$</span><span class='va'>ages</span><span class='op'>)</span>
+
+<span class='co'># Automatically downloads the nLx and ASFR data</span>
+<span class='va'>bpe_male</span> <span class='op'>&lt;-</span> <span class='fu'>basepop_single</span><span class='op'>(</span>
+  country <span class='op'>=</span> <span class='va'>country</span>,
+  refYear <span class='op'>=</span> <span class='va'>refYear</span>,
+  Females_single <span class='op'>=</span> <span class='va'>pop_female_single</span>,
+  Males_single <span class='op'>=</span> <span class='va'>pop_male_single</span>,
+  female <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
+
+<span class='va'>bpe_female</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
+<span class='va'>pop_female_single</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
+
+
+<span class='co'>################ BPA for females (five year age groups) #####################</span>
+
+ <span class='va'>smoothed_females</span> <span class='op'>&lt;-</span> <span class='fu'><a href='smooth_age_5.html'>smooth_age_5</a></span><span class='op'>(</span>Value <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
+                                  Age <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>pop_female_counts</span><span class='op'>)</span><span class='op'>)</span>,
+                                  method <span class='op'>=</span> <span class='st'>"Arriaga"</span>,
+                                  OAG <span class='op'>=</span> <span class='cn'>TRUE</span>,
+                                  young.tail <span class='op'>=</span> <span class='st'>"Original"</span><span class='op'>)</span>
+
+<span class='co'># Automatically downloads the nLx and ASFR data</span>
+<span class='va'>bpa_female</span> <span class='op'>&lt;-</span> <span class='fu'>basepop_five</span><span class='op'>(</span>
+  country <span class='op'>=</span> <span class='va'>country</span>,
+  refYear <span class='op'>=</span> <span class='va'>refYear</span>,
+  Females_five <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
+  SmoothedFemales <span class='op'>=</span> <span class='va'>smoothed_females</span>
+<span class='op'>)</span>
+
+<span class='co'># The counts for the first three age groups have been adjusted:</span>
+<span class='va'>bpa_female</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
+<span class='va'>pop_female_counts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
+
+<span class='co'>################ BPA for males (five year age groups) #####################</span>
+
+<span class='co'># Automatically downloads the nLx and ASFR data</span>
+<span class='va'>bpa_male</span> <span class='op'>&lt;-</span> <span class='fu'>basepop_five</span><span class='op'>(</span>
+  country <span class='op'>=</span> <span class='va'>country</span>,
+  refYear <span class='op'>=</span> <span class='va'>refYear</span>,
+  Females_five <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
+  Males_five <span class='op'>=</span> <span class='va'>pop_male_counts</span>,
+  SmoothedFemales <span class='op'>=</span> <span class='va'>smoothed_females</span>,
+  female <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
+
+<span class='co'># The counts for the first three age groups have been adjusted:</span>
+<span class='va'>bpa_male</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
+<span class='va'>pop_male_counts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
+
+
+<span class='co'>################ PASS example ###############################</span>
+
  <span class='co'># (1) RefYear</span>
  <span class='va'>refYear</span> <span class='op'>&lt;-</span> <span class='fl'>1986.21</span>
 
@@ -423,9 +555,9 @@ United States Census Bureau (2017-nov).
 
  <span class='co'># (6) The male and female nLx functions for ages under 1 year, 1 to 4 years, and 5 to 9</span>
  <span class='co'># years, pertaining to an earlier and later date</span>
- <span class='va'>nlxDatesIn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1977.31</span>, <span class='fl'>1986.50</span><span class='op'>)</span>
+ <span class='va'>nLxDatesIn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1977.31</span>, <span class='fl'>1986.50</span><span class='op'>)</span>
 
- <span class='va'>nlxMale</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>87732</span>,
+ <span class='va'>nLxMale</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>87732</span>,
                      <span class='fl'>304435</span>,
                      <span class='fl'>361064</span>,
                      <span class='fl'>88451</span>,
@@ -433,8 +565,8 @@ United States Census Bureau (2017-nov).
                      <span class='fl'>370362</span>
                      <span class='op'>)</span>,
                    nrow <span class='op'>=</span> <span class='fl'>3</span>, ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
- 
- <span class='va'>nlxFemale</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>89842</span>,
+
+ <span class='va'>nLxFemale</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>89842</span>,
                        <span class='fl'>314521</span>,
                        <span class='fl'>372681</span>,
                        <span class='fl'>353053</span>,
@@ -460,35 +592,35 @@ United States Census Bureau (2017-nov).
                        <span class='fl'>234587</span><span class='op'>)</span>,
                      nrow <span class='op'>=</span> <span class='fl'>12</span>,
                      ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
- 
+
  <span class='co'># (7) A set of age-specific fertility rates pertaining to an earlier and later</span>
  <span class='co'># date</span>
- 
+
  <span class='va'>asfrmat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"15-19"</span> <span class='op'>=</span> <span class='fl'>0.2000</span>,
                      <span class='st'>"20-24"</span> <span class='op'>=</span> <span class='fl'>0.3000</span>,
-                     <span class='st'>"25-29"</span> <span class='op'>=</span> <span class='fl'>0.3000</span>, 
-                     <span class='st'>"30-34"</span> <span class='op'>=</span> <span class='fl'>0.2500</span>, 
-                     <span class='st'>"35-39"</span> <span class='op'>=</span> <span class='fl'>0.2000</span>, 
-                     <span class='st'>"40-44"</span> <span class='op'>=</span> <span class='fl'>0.1500</span>, 
+                     <span class='st'>"25-29"</span> <span class='op'>=</span> <span class='fl'>0.3000</span>,
+                     <span class='st'>"30-34"</span> <span class='op'>=</span> <span class='fl'>0.2500</span>,
+                     <span class='st'>"35-39"</span> <span class='op'>=</span> <span class='fl'>0.2000</span>,
+                     <span class='st'>"40-44"</span> <span class='op'>=</span> <span class='fl'>0.1500</span>,
                      <span class='st'>"45-49"</span> <span class='op'>=</span> <span class='fl'>0.0500</span>,
                      <span class='st'>"15-19"</span> <span class='op'>=</span> <span class='fl'>0.1500</span>,
                      <span class='st'>"20-24"</span> <span class='op'>=</span> <span class='fl'>0.2000</span>,
-                     <span class='st'>"25-29"</span> <span class='op'>=</span> <span class='fl'>0.2750</span>, 
-                     <span class='st'>"30-34"</span> <span class='op'>=</span> <span class='fl'>0.2250</span>, 
-                     <span class='st'>"35-39"</span> <span class='op'>=</span> <span class='fl'>0.1750</span>, 
-                     <span class='st'>"40-44"</span> <span class='op'>=</span> <span class='fl'>0.1250</span>, 
+                     <span class='st'>"25-29"</span> <span class='op'>=</span> <span class='fl'>0.2750</span>,
+                     <span class='st'>"30-34"</span> <span class='op'>=</span> <span class='fl'>0.2250</span>,
+                     <span class='st'>"35-39"</span> <span class='op'>=</span> <span class='fl'>0.1750</span>,
+                     <span class='st'>"40-44"</span> <span class='op'>=</span> <span class='fl'>0.1250</span>,
                      <span class='st'>"45-49"</span> <span class='op'>=</span> <span class='fl'>0.0500</span><span class='op'>)</span>,
                    nrow <span class='op'>=</span> <span class='fl'>7</span>,
                    ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
- 
+
  <span class='va'>AsfrDatesIn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1977.81</span>, <span class='fl'>1985.71</span><span class='op'>)</span>
- 
+
  <span class='va'>smoothed_females</span> <span class='op'>&lt;-</span> <span class='fu'><a href='smooth_age_5.html'>smooth_age_5</a></span><span class='op'>(</span>Value <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
                                   Age <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>pop_female_counts</span><span class='op'>)</span><span class='op'>)</span>,
                                   method <span class='op'>=</span> <span class='st'>"Arriaga"</span>,
                                   OAG <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                   young.tail <span class='op'>=</span> <span class='st'>"Original"</span><span class='op'>)</span>
- 
+
  <span class='co'>## This is the only number that messes up the whole calculation.</span>
  <span class='co'>## smooth_age_5 returns the same result as the PASS excel sheet</span>
  <span class='co'>## except for the age groups 10-15 and 15-19. Here we only use</span>
@@ -498,7 +630,7 @@ United States Census Bureau (2017-nov).
  <span class='va'>smoothed_females</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>34721</span>
 
  <span class='co'># For adjusting using BPA for males, we need to specify</span>
- <span class='co'># Sex = "m" with Males and nlxMale.</span>
+ <span class='co'># female = FALSE with Males and nLxMale.</span>
  <span class='va'>bpa_male</span> <span class='op'>&lt;-</span>
    <span class='fu'>basepop_five</span><span class='op'>(</span>
      refYear <span class='op'>=</span> <span class='va'>refYear</span>,
@@ -506,31 +638,30 @@ United States Census Bureau (2017-nov).
      Females_five <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
      SmoothedFemales <span class='op'>=</span> <span class='va'>smoothed_females</span>,
      SRB <span class='op'>=</span> <span class='va'>sex_ratio</span>,
-     nlxFemale <span class='op'>=</span> <span class='va'>nlxFemale</span>,
-     nlxMale <span class='op'>=</span> <span class='va'>nlxMale</span>,
-     nlxDatesIn <span class='op'>=</span> <span class='va'>nlxDatesIn</span>,
-     asfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
+     nLxFemale <span class='op'>=</span> <span class='va'>nLxFemale</span>,
+     nLxMale <span class='op'>=</span> <span class='va'>nLxMale</span>,
+     nLxDatesIn <span class='op'>=</span> <span class='va'>nLxDatesIn</span>,
+     AsfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
      AsfrDatesIn <span class='op'>=</span> <span class='va'>AsfrDatesIn</span>,
-     Sex <span class='op'>=</span> <span class='st'>"m"</span>
-     <span class='op'>)</span>
+     female <span class='op'>=</span> <span class='cn'>FALSE</span>
+   <span class='op'>)</span>
 
  <span class='co'># See adjustments?</span>
  <span class='va'>pop_male_counts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
  <span class='va'>bpa_male</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
 
  <span class='co'># Adjusting the BPA for females requires less arguments</span>
- 
+
  <span class='va'>bpa_female</span> <span class='op'>&lt;-</span>
    <span class='fu'>basepop_five</span><span class='op'>(</span>
      refYear <span class='op'>=</span> <span class='va'>refYear</span>,
      Females_five <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
      SmoothedFemales <span class='op'>=</span> <span class='va'>smoothed_females</span>,
      SRB <span class='op'>=</span> <span class='va'>sex_ratio</span>,
-     nlxFemale <span class='op'>=</span> <span class='va'>nlxFemale</span>,
-     nlxDatesIn <span class='op'>=</span> <span class='va'>nlxDatesIn</span>,
-     asfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
-     AsfrDatesIn <span class='op'>=</span> <span class='va'>AsfrDatesIn</span>,
-     Sex <span class='op'>=</span> <span class='st'>"f"</span>
+     nLxFemale <span class='op'>=</span> <span class='va'>nLxFemale</span>,
+     nLxDatesIn <span class='op'>=</span> <span class='va'>nLxDatesIn</span>,
+     AsfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
+     AsfrDatesIn <span class='op'>=</span> <span class='va'>AsfrDatesIn</span>
    <span class='op'>)</span>
 
  <span class='va'>pop_female_counts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
@@ -544,12 +675,12 @@ United States Census Bureau (2017-nov).
      Males_five <span class='op'>=</span> <span class='va'>pop_male_counts</span>,
      Females_five <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
      SRB <span class='op'>=</span> <span class='va'>sex_ratio</span>,
-     nlxFemale <span class='op'>=</span> <span class='va'>nlxFemale</span>,
-     nlxMale <span class='op'>=</span> <span class='va'>nlxMale</span>,
-     nlxDatesIn <span class='op'>=</span> <span class='va'>nlxDatesIn</span>,
-     asfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
+     nLxFemale <span class='op'>=</span> <span class='va'>nLxFemale</span>,
+     nLxMale <span class='op'>=</span> <span class='va'>nLxMale</span>,
+     nLxDatesIn <span class='op'>=</span> <span class='va'>nLxDatesIn</span>,
+     AsfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
      AsfrDatesIn <span class='op'>=</span> <span class='va'>AsfrDatesIn</span>,
-     Sex <span class='op'>=</span> <span class='st'>"m"</span>
+     female <span class='op'>=</span> <span class='cn'>FALSE</span>
      <span class='op'>)</span>
 
  <span class='co'># See adjustments?</span>
@@ -558,17 +689,16 @@ United States Census Bureau (2017-nov).
  <span class='va'>bpe_male</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
 
  <span class='co'># Adjusting the BPA for females requires less arguments</span>
- 
+
  <span class='va'>bpe_female</span> <span class='op'>&lt;-</span>
    <span class='fu'>basepop_five</span><span class='op'>(</span>
      refYear <span class='op'>=</span> <span class='va'>refYear</span>,
      Females_five <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
      SRB <span class='op'>=</span> <span class='va'>sex_ratio</span>,
-     nlxFemale <span class='op'>=</span> <span class='va'>nlxFemale</span>,
-     nlxDatesIn <span class='op'>=</span> <span class='va'>nlxDatesIn</span>,
-     asfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
-     AsfrDatesIn <span class='op'>=</span> <span class='va'>AsfrDatesIn</span>,
-     Sex <span class='op'>=</span> <span class='st'>"f"</span>
+     nLxFemale <span class='op'>=</span> <span class='va'>nLxFemale</span>,
+     nLxDatesIn <span class='op'>=</span> <span class='va'>nLxDatesIn</span>,
+     AsfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
+     AsfrDatesIn <span class='op'>=</span> <span class='va'>AsfrDatesIn</span>
    <span class='op'>)</span>
 
  <span class='va'>pop_female_counts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
@@ -755,7 +885,7 @@ United States Census Bureau (2017-nov).
 
 
  <span class='co'># For adjusting using BPA for males, we need to specify</span>
- <span class='co'># Sex = "m" with Males and nlxMale.</span>
+ <span class='co'># female = FALSE with Males and nLxMale.</span>
  <span class='va'>bpa_male</span> <span class='op'>&lt;-</span>
    <span class='fu'>basepop_single</span><span class='op'>(</span>
      refYear <span class='op'>=</span> <span class='va'>refYear</span>,
@@ -763,12 +893,12 @@ United States Census Bureau (2017-nov).
      Females_single <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
      SmoothedFemales <span class='op'>=</span> <span class='va'>smoothed_females</span>,
      SRB <span class='op'>=</span> <span class='va'>sex_ratio</span>,
-     nlxFemale <span class='op'>=</span> <span class='va'>nlxFemale</span>,
-     nlxMale <span class='op'>=</span> <span class='va'>nlxMale</span>,
-     nlxDatesIn <span class='op'>=</span> <span class='va'>nlxDatesIn</span>,
-     asfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
+     nLxFemale <span class='op'>=</span> <span class='va'>nLxFemale</span>,
+     nLxMale <span class='op'>=</span> <span class='va'>nLxMale</span>,
+     nLxDatesIn <span class='op'>=</span> <span class='va'>nLxDatesIn</span>,
+     AsfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
      AsfrDatesIn <span class='op'>=</span> <span class='va'>AsfrDatesIn</span>,
-     Sex <span class='op'>=</span> <span class='st'>"m"</span>
+     female <span class='op'>=</span> <span class='cn'>FALSE</span>
      <span class='op'>)</span>
 
  <span class='co'># See adjustments?</span>
@@ -782,11 +912,10 @@ United States Census Bureau (2017-nov).
      Females_single <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
      SmoothedFemales <span class='op'>=</span> <span class='va'>smoothed_females</span>,
      SRB <span class='op'>=</span> <span class='va'>sex_ratio</span>,
-     nlxFemale <span class='op'>=</span> <span class='va'>nlxFemale</span>,
-     nlxDatesIn <span class='op'>=</span> <span class='va'>nlxDatesIn</span>,
-     asfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
-     AsfrDatesIn <span class='op'>=</span> <span class='va'>AsfrDatesIn</span>,
-     Sex <span class='op'>=</span> <span class='st'>"f"</span>
+     nLxFemale <span class='op'>=</span> <span class='va'>nLxFemale</span>,
+     nLxDatesIn <span class='op'>=</span> <span class='va'>nLxDatesIn</span>,
+     AsfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
+     AsfrDatesIn <span class='op'>=</span> <span class='va'>AsfrDatesIn</span>
    <span class='op'>)</span>
 
  <span class='va'>pop_female_counts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
@@ -800,12 +929,12 @@ United States Census Bureau (2017-nov).
      Males_single <span class='op'>=</span> <span class='va'>pop_male_counts</span>,
      Females_single <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
      SRB <span class='op'>=</span> <span class='va'>sex_ratio</span>,
-     nlxFemale <span class='op'>=</span> <span class='va'>nlxFemale</span>,
-     nlxMale <span class='op'>=</span> <span class='va'>nlxMale</span>,
-     nlxDatesIn <span class='op'>=</span> <span class='va'>nlxDatesIn</span>,
-     asfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
+     nLxFemale <span class='op'>=</span> <span class='va'>nLxFemale</span>,
+     nLxMale <span class='op'>=</span> <span class='va'>nLxMale</span>,
+     nLxDatesIn <span class='op'>=</span> <span class='va'>nLxDatesIn</span>,
+     AsfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
      AsfrDatesIn <span class='op'>=</span> <span class='va'>AsfrDatesIn</span>,
-     Sex <span class='op'>=</span> <span class='st'>"m"</span>
+     female <span class='op'>=</span> <span class='cn'>FALSE</span>
      <span class='op'>)</span>
 
  <span class='co'># See adjustments?</span>
@@ -819,11 +948,10 @@ United States Census Bureau (2017-nov).
      refYear <span class='op'>=</span> <span class='va'>refYear</span>,
      Females_single <span class='op'>=</span> <span class='va'>pop_female_counts</span>,
      SRB <span class='op'>=</span> <span class='va'>sex_ratio</span>,
-     nlxFemale <span class='op'>=</span> <span class='va'>nlxFemale</span>,
-     nlxDatesIn <span class='op'>=</span> <span class='va'>nlxDatesIn</span>,
-     asfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
-     AsfrDatesIn <span class='op'>=</span> <span class='va'>AsfrDatesIn</span>,
-     Sex <span class='op'>=</span> <span class='st'>"f"</span>
+     nLxFemale <span class='op'>=</span> <span class='va'>nLxFemale</span>,
+     nLxDatesIn <span class='op'>=</span> <span class='va'>nLxDatesIn</span>,
+     AsfrMat <span class='op'>=</span> <span class='va'>asfrmat</span>,
+     AsfrDatesIn <span class='op'>=</span> <span class='va'>AsfrDatesIn</span>
    <span class='op'>)</span>
 
  <span class='va'>pop_female_counts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
