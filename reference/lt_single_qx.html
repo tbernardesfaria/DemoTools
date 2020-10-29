@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Derive lifetable deaths from survivorship. — lt_id_l_d • DemoTools</title>
+<title>calculate a single age lifetable from qx — lt_single_qx • DemoTools</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,9 @@
 
 
 
-<meta property="og:title" content="Derive lifetable deaths from survivorship. — lt_id_l_d" />
-<meta property="og:description" content="This lifetable identity is the same no matter what kind of lifetable is required.
-You can find it in any demography textbook." />
+<meta property="og:title" content="calculate a single age lifetable from qx — lt_single_qx" />
+<meta property="og:description" content="Computes lifetable columns from single age qx by first computing 1ax, then computing
+1mx from 1qx and 1ax, and finally passing the 1mx to the lt_single_mx() function" />
 <meta property="og:image" content="https://timriffe.github.io/DemoTools/logo.png" />
 
 
@@ -154,39 +154,120 @@ You can find it in any demography textbook." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Derive lifetable deaths from survivorship.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/timriffe/DemoTools/blob/master/R/lt_id.R'><code>R/lt_id.R</code></a></small>
-    <div class="hidden name"><code>lt_id_l_d.Rd</code></div>
+    <h1>calculate a single age lifetable from qx</h1>
+    <small class="dont-index">Source: <a href='https://github.com/timriffe/DemoTools/blob/master/R/lt_single_qx.R'><code>R/lt_single_qx.R</code></a></small>
+    <div class="hidden name"><code>lt_single_qx.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This lifetable identity is the same no matter what kind of lifetable is required.
-You can find it in any demography textbook.</p>
+    <p>Computes lifetable columns from single age qx by first computing 1ax, then computing
+1mx from 1qx and 1ax, and finally passing the 1mx to the lt_single_mx() function</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lt_id_l_d</span><span class='op'>(</span><span class='va'>lx</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>lt_single_qx</span><span class='op'>(</span>
+  <span class='va'>nqx</span>,
+  Age <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>nqx</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>1</span>,
+  radix <span class='op'>=</span> <span class='fl'>1e+05</span>,
+  a0rule <span class='op'>=</span> <span class='st'>"ak"</span>,
+  Sex <span class='op'>=</span> <span class='st'>"m"</span>,
+  region <span class='op'>=</span> <span class='st'>"w"</span>,
+  IMR <span class='op'>=</span> <span class='cn'>NA</span>,
+  mod <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  SRB <span class='op'>=</span> <span class='fl'>1.05</span>,
+  OAG <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  OAnew <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>Age</span><span class='op'>)</span>,
+  extrapLaw <span class='op'>=</span> <span class='st'>"kannisto"</span>,
+  extrapFrom <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>Age</span><span class='op'>)</span>,
+  extrapFit <span class='op'>=</span> <span class='va'>Age</span><span class='op'>[</span><span class='va'>Age</span> <span class='op'>&gt;=</span> <span class='fl'>60</span><span class='op'>]</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>lx</th>
-      <td><p>numeric.  Vector of age-specific lifetable survivorship.</p></td>
+      <th>nqx</th>
+      <td><p>numeric. Vector of conditional death probabilities in abridged age classes.</p></td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td><p>integer. A vector of ages of the lower integer bound of the age classes.</p></td>
+    </tr>
+    <tr>
+      <th>radix</th>
+      <td><p>numeric. Lifetable radix, l<sub>0. Default 100000.</p></td>
+    </tr>
+    <tr>
+      <th>a0rule</th>
+      <td><p>character. Either <code>"ak"</code> (default) or <code>"cd"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>Sex</th>
+      <td><p>character. Either male <code>"m"</code>, female <code>"f"</code>, or both <code>"b"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>region</th>
+      <td><p>character. North, East, South, or West: code"n", code"e", code"s", code"w". Default code"w".</p></td>
+    </tr>
+    <tr>
+      <th>IMR</th>
+      <td><p>numeric. Infant mortality rate q<sub>0, in case available and <code>nqx</code> is not specified. Default <code>NA</code>.</p></td>
+    </tr>
+    <tr>
+      <th>mod</th>
+      <td><p>logical. If <code>"un"</code> specified for <code>axmethod</code>, whether or not to use Nan Li's modification for ages 5-14. Default <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>SRB</th>
+      <td><p>the sex ratio at birth (boys / girls), detault 1.05</p></td>
+    </tr>
+    <tr>
+      <th>OAG</th>
+      <td><p>logical. Whether or not the last element of <code>nMx</code> (or <code>nqx</code> or <code>lx</code>) is an open age group. Default <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>OAnew</th>
+      <td><p>integer. Desired open age group (5-year ages only). Default <code><a href='https://rdrr.io/r/base/Extremes.html'>max(Age)</a></code>. If higher then rates are extrapolated.</p></td>
+    </tr>
+    <tr>
+      <th>extrapLaw</th>
+      <td><p>character. If extrapolating, which parametric mortality law should be invoked? Options include
+<code>"Kannisto", "Kannisto_Makeham", "Makeham", "Gompertz", "GGompertz", "Beard",    "Beard_Makeham", "Quadratic"</code>. Default <code>"Kannisto"</code>. See details.</p></td>
+    </tr>
+    <tr>
+      <th>extrapFrom</th>
+      <td><p>integer. Age from which to impute extrapolated mortality.</p></td>
+    </tr>
+    <tr>
+      <th>extrapFit</th>
+      <td><p>integer vector. Ages to include in model fitting. Defaults to all ages <code>&gt;          =60</code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments to be passed on to the
+<code><a href='https://rdrr.io/pkg/MortalityLaws/man/MortalityLaw.html'>MortalityLaw</a></code> function.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>ndx vector of lifetable deaths.</p>
+    <p>Lifetable in data.frame with columns</p><ul>
+<li><p>Ageinteger. Lower bound of abridged age class,</p></li>
+<li><p>AgeIntinteger. Age class widths.</p></li>
+<li><p>nMxnumeric. Age-specific central death rates.</p></li>
+<li><p>nAxnumeric. Average time spent in interval by those deceased in interval.</p></li>
+<li><p>nqxnumeric. Age-specific conditional death probabilities.</p></li>
+<li><p>lxnumeric. Lifetable survivorship</p></li>
+<li><p>ndxnumeric. Lifetable deaths distribution.</p></li>
+<li><p>nLxnumeric. Lifetable exposure.</p></li>
+<li><p>Sxnumeric. Survivor ratios in uniform 5-year age groups.</p></li>
+<li><p>Txnumeric. Lifetable total years left to live above age x.</p></li>
+<li><p>exnumeric. Age-specific remaining life expectancy.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The vector returned is the same length as <code>lx</code> and it sums to the lifetable radix.
-If the radix is one then this is the discrete deaths distribution.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Preston S, Heuveline P, Guillot M (2000).
-<em>Demography: measuring and modeling population processes</em>.
-Wiley-Blackwell.</p>
+    <p>Similar to <code><a href='lt_abridged.html'>lt_abridged()</a></code> details, forthcoming</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
