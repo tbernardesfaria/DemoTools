@@ -61,6 +61,9 @@
     <loc>https://timriffe.github.io/DemoTools//reference/calcAgeN.html</loc>
   </url>
   <url>
+    <loc>https://timriffe.github.io/DemoTools//reference/census_cohort_adjust.html</loc>
+  </url>
+  <url>
     <loc>https://timriffe.github.io/DemoTools//reference/check_heaping_bachi.html</loc>
   </url>
   <url>
@@ -167,6 +170,9 @@
   </url>
   <url>
     <loc>https://timriffe.github.io/DemoTools//reference/interp.html</loc>
+  </url>
+  <url>
+    <loc>https://timriffe.github.io/DemoTools//reference/interp_coh_bare.html</loc>
   </url>
   <url>
     <loc>https://timriffe.github.io/DemoTools//reference/interpolatePop.html</loc>

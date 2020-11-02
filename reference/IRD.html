@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DemoTools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.09.25</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.09.28</span>
       </span>
     </div>
 
@@ -194,8 +194,8 @@
 <span class='va'>pop2</span>                     <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6.48</span>,<span class='fl'>12.27</span>,<span class='fl'>15.25</span>,<span class='fl'>15.10</span>,<span class='fl'>14.66</span>,<span class='fl'>10.80</span>,<span class='fl'>8.95</span>,<span class='fl'>9.28</span>,<span class='fl'>7.21</span><span class='op'>)</span>
 <span class='fu'>IRD</span><span class='op'>(</span><span class='va'>pop1</span>, <span class='va'>pop2</span><span class='op'>)</span>     <span class='co'># 6.7 reproduces table 7.20 of Siegel &amp; Swanson (2004)</span>
 </div><div class='output co'>#&gt; [1] 6.693219</div><div class='input'><span class='fu'>IRD</span><span class='op'>(</span><span class='va'>pop1</span>,<span class='va'>pop1</span><span class='op'>)</span>      <span class='co'># identical pops  = 0</span>
-</div><div class='output co'>#&gt; [1] 0</div><div class='input'><span class='fu'>IRD</span><span class='op'>(</span><span class='va'>pop1</span>, <span class='va'>pop2</span> <span class='op'>*</span> <span class='fl'>2</span><span class='op'>)</span> <span class='co'># only structure matters</span>
-</div><div class='output co'>#&gt; [1] 6.693219</div><div class='input'><span class='va'>pop3</span>                     <span class='op'>&lt;-</span> <span class='va'>pop1</span>
+</div><div class='output co'>#&gt; [1] 0</div><div class='input'><span class='fu'>IRD</span><span class='op'>(</span><span class='va'>pop1</span>, <span class='va'>pop1</span> <span class='op'>*</span> <span class='fl'>2</span><span class='op'>)</span> <span class='co'># only structure matters</span>
+</div><div class='output co'>#&gt; [1] 0</div><div class='input'><span class='va'>pop3</span>                     <span class='op'>&lt;-</span> <span class='va'>pop1</span>
 <span class='va'>pop3</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>]</span>                <span class='op'>&lt;-</span> <span class='fl'>0</span>
 <span class='fu'>IRD</span><span class='op'>(</span><span class='va'>pop1</span>, <span class='va'>pop3</span><span class='op'>)</span>     <span class='co'># theoretical max &gt; 100</span>
 </div><div class='output co'>#&gt; [1] 116.242</div></pre>

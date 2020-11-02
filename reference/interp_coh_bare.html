@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Shift a vector left or right. — shift.vector • DemoTools</title>
+<title>component-free intercensalcohort interpolation — interp_coh_bare • DemoTools</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,8 @@
 
 
 
-<meta property="og:title" content="Shift a vector left or right. — shift.vector" />
-<meta property="og:description" content="Simple function to move the elements of a vector to earlier or
-later positions depending on the value of shift. Auxiliary to other functions,
-rather multipurpose." />
+<meta property="og:title" content="component-free intercensalcohort interpolation — interp_coh_bare" />
+<meta property="og:description" content="Cohorts between two censuses are interpolated flexibly using linear, exponential, or power rules. The lower and upper intercensal triangles are filled using within-age interpolation. This function is experimental and still in development." />
 <meta property="og:image" content="https://timriffe.github.io/DemoTools/logo.png" />
 
 
@@ -155,42 +153,53 @@ rather multipurpose." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Shift a vector left or right.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/timriffe/DemoTools/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>shift.vector.Rd</code></div>
+    <h1>component-free intercensalcohort interpolation</h1>
+    <small class="dont-index">Source: <a href='https://github.com/timriffe/DemoTools/blob/master/R/interp_coh.R'><code>R/interp_coh.R</code></a></small>
+    <div class="hidden name"><code>interp_coh_bare.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Simple function to move the elements of a vector to earlier or
-later positions depending on the value of <code>shift</code>. Auxiliary to other functions,
-rather multipurpose.</p>
+    <p>Cohorts between two censuses are interpolated flexibly using linear, exponential, or power rules. The lower and upper intercensal triangles are filled using within-age interpolation. This function is experimental and still in development.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>shift.vector</span><span class='op'>(</span><span class='va'>x</span>, shift <span class='op'>=</span> <span class='fl'>0</span>, fill <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>interp_coh_bare</span><span class='op'>(</span><span class='va'>c1</span>, <span class='va'>c2</span>, <span class='va'>date1</span>, <span class='va'>date2</span>, <span class='va'>age1</span>, <span class='va'>age2</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>vector.</p></td>
+      <th>c1</th>
+      <td><p>numeric vector. The first (left) census in single age groups</p></td>
     </tr>
     <tr>
-      <th>shift</th>
-      <td><p>integer. Value <code>&lt; length(x)</code>. Default 0.</p></td>
+      <th>c2</th>
+      <td><p>numeric vector. The second (right) census in single age groups</p></td>
     </tr>
     <tr>
-      <th>fill</th>
-      <td><p>Values to fill newly created positions, e.g. <code>FALSE</code>, <code>NA</code>, or  <code>0</code>.</p></td>
+      <th>date1</th>
+      <td><p>reference date of c1`. Either a Date class object or an unambiguous character string in the format "YYYY-MM-DD".</p></td>
+    </tr>
+    <tr>
+      <th>date2</th>
+      <td><p>reference date of c2`. Either a Date class object or an unambiguous character string in the format "YYYY-MM-DD".</p></td>
+    </tr>
+    <tr>
+      <th>age1</th>
+      <td><p>integer vector. single ages of <code>c1</code></p></td>
+    </tr>
+    <tr>
+      <th>age2</th>
+      <td><p>integer vector. single ages of <code>c2</code></p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>extra arguments passed to <code><a href='interp.html'>interp()</a></code>. Not currently in use.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>The vector x, shifted left or right.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Nothing fancy here. This is used for example in <code>Noumbissi()</code> to match denominator ranges to numerator positions using logical vectors.</p>
+    <div class='dont-index'><p>interp</p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
