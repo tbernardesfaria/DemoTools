@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>estimates a0 using the Andreev-Kingkade rule of thumb starting with an event exposure rate — lt_rule_ak_m0_a0 • DemoTools</title>
+<title>calculate an abridged life table that is consistent with a life table by single year of age — lt_single2abridged • DemoTools</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,11 @@
 
 
 
-<meta property="og:title" content="estimates a0 using the Andreev-Kingkade rule of thumb starting with an event exposure rate — lt_rule_ak_m0_a0" />
-<meta property="og:description" content="These formulas and cutpoints are based on a supplementary analysis from Andreev &amp;amp; Kingkade. The original formulation was in terms of IMR. There is also an analytic path to convert M0 to q0 and then use the original q0 cutpoints. Code ported from HMD code base." />
+<meta property="og:title" content="calculate an abridged life table that is consistent with a life table by single year of age — lt_single2abridged" />
+<meta property="og:description" content="Computes abridged life table columns based on the lx, nLx , and ex values from
+a single year life table, in accordance with step 2.2 of the Human Life Table Protocol
+https://www.lifetable.de/methodology.pdf. Output abridged life table has same open age group
+as input single age life table" />
 <meta property="og:image" content="https://timriffe.github.io/DemoTools/logo.png" />
 
 
@@ -153,33 +156,60 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>estimates a0 using the Andreev-Kingkade rule of thumb starting with an event exposure rate</h1>
-    <small class="dont-index">Source: <a href='https://github.com/timriffe/DemoTools/blob/master/R/lt_rule.R'><code>R/lt_rule.R</code></a></small>
-    <div class="hidden name"><code>lt_rule_ak_m0_a0.Rd</code></div>
+    <h1>calculate an abridged life table that is consistent with a life table by single year of age</h1>
+    <small class="dont-index">Source: <a href='https://github.com/timriffe/DemoTools/blob/master/R/lt_single2abridged.R'><code>R/lt_single2abridged.R</code></a></small>
+    <div class="hidden name"><code>lt_single2abridged.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These formulas and cutpoints are based on a supplementary analysis from Andreev &amp; Kingkade. The original formulation was in terms of IMR. There is also an analytic path to convert M0 to q0 and then use the original q0 cutpoints. Code ported from HMD code base.</p>
+    <p>Computes abridged life table columns based on the lx, nLx , and ex values from
+a single year life table, in accordance with step 2.2 of the Human Life Table Protocol
+https://www.lifetable.de/methodology.pdf. Output abridged life table has same open age group
+as input single age life table</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lt_rule_ak_m0_a0</span><span class='op'>(</span><span class='va'>M0</span>, <span class='va'>Sex</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>lt_single2abridged</span><span class='op'>(</span><span class='va'>lx</span>, <span class='va'>nLx</span>, <span class='va'>ex</span>, Age <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>lx</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>M0</th>
-      <td><p>a value or vector of values of m0, the death risk in the first year of life.</p></td>
+      <th>lx</th>
+      <td><p>numeric. Vector of lifetable survivorship at single ages.</p></td>
     </tr>
     <tr>
-      <th>Sex</th>
-      <td><p>either "m" or "f"</p></td>
+      <th>nLx</th>
+      <td><p>numeric. Vector of lifetable exposure at single ages.</p></td>
+    </tr>
+    <tr>
+      <th>ex</th>
+      <td><p>numeric. Vector of Age-specific remaining life expectancy at single ages.</p></td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td><p>integer. Lower bounds of single ages.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a0, the estimated average age at death of those dying in the first year of life, either a single value or a vector of values.</p>
+    <p>Abridged lifetable in data.frame with columns</p><ul>
+<li><p>Ageinteger. Lower bound of abridged age class,</p></li>
+<li><p>AgeIntinteger. Age class widths.</p></li>
+<li><p>nMxnumeric. Age-specific central death rates.</p></li>
+<li><p>nAxnumeric. Average time spent in interval by those deceased in interval.</p></li>
+<li><p>nqxnumeric. Age-specific conditional death probabilities.</p></li>
+<li><p>lxnumeric. Lifetable survivorship</p></li>
+<li><p>ndxnumeric. Lifetable deaths distribution.</p></li>
+<li><p>nLxnumeric. Lifetable exposure.</p></li>
+<li><p>Sxnumeric. Survivor ratios in uniform 5-year age groups.</p></li>
+<li><p>Txnumeric. Lifetable total years left to live above age x.</p></li>
+<li><p>exnumeric. Age-specific remaining life expectancy.</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Similar to <code><a href='lt_abridged.html'>lt_abridged()</a></code> details, forthcoming</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
