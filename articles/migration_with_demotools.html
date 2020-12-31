@@ -122,7 +122,7 @@
     
     
 <hr>
-title: “Migration models with DemoTools” author: “José Manuel Aburto, Ilya Kashnitsky, Monica Alexander, Jorge Cimentada, Tim Riffe” date: “2020-12-30” output: rmarkdown::html_vignette bibliography: REFERENCES.bib vignette: &gt; % % % header-includes: -
+title: “Migration models with DemoTools” author: “José Manuel Aburto, Ilya Kashnitsky, Monica Alexander, Jorge Cimentada, Tim Riffe” date: “2020-12-31” output: rmarkdown::html_vignette bibliography: REFERENCES.bib vignette: &gt; % % % header-includes: -
 
 <ul>
 <li>’—</li>
@@ -170,7 +170,7 @@ m(x)= a_1 \exp{[ \alpha_1 x ]} + a_2 \exp{[ -\alpha_2 (x - \mu_2) - \exp{ [ -\la
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">DemoTools</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 
 <span class="va">pars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>a1<span class="op">=</span> <span class="fl">0.09</span>, alpha1<span class="op">=</span> <span class="fl">0.1</span>, 
           a2<span class="op">=</span> <span class="fl">0.2</span>, alpha2<span class="op">=</span> <span class="fl">0.1</span>, mu2<span class="op">=</span> <span class="fl">21</span>, lambda2<span class="op">=</span> <span class="fl">0.4</span>, 
@@ -273,8 +273,8 @@ m(x)= a_1 \exp{[ \alpha_1 x ]} + a_2 \exp{[ -\alpha_2 (x - \mu_2) - \exp{ [ -\la
 <span class="co">#&gt; </span>
 <span class="co">#&gt; SAMPLING FOR MODEL '28c89f5948288d3bb37fc72d345573dc' NOW (CHAIN 1).</span>
 <span class="co">#&gt; Chain 1: </span>
-<span class="co">#&gt; Chain 1: Gradient evaluation took 0.000126 seconds</span>
-<span class="co">#&gt; Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 1.26 seconds.</span>
+<span class="co">#&gt; Chain 1: Gradient evaluation took 0.000122 seconds</span>
+<span class="co">#&gt; Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 1.22 seconds.</span>
 <span class="co">#&gt; Chain 1: Adjust your expectations accordingly!</span>
 <span class="co">#&gt; Chain 1: </span>
 <span class="co">#&gt; Chain 1: </span>
@@ -291,15 +291,15 @@ m(x)= a_1 \exp{[ \alpha_1 x ]} + a_2 \exp{[ -\alpha_2 (x - \mu_2) - \exp{ [ -\la
 <span class="co">#&gt; Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)</span>
 <span class="co">#&gt; Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)</span>
 <span class="co">#&gt; Chain 1: </span>
-<span class="co">#&gt; Chain 1:  Elapsed Time: 2.57137 seconds (Warm-up)</span>
-<span class="co">#&gt; Chain 1:                2.9613 seconds (Sampling)</span>
-<span class="co">#&gt; Chain 1:                5.53267 seconds (Total)</span>
+<span class="co">#&gt; Chain 1:  Elapsed Time: 2.59183 seconds (Warm-up)</span>
+<span class="co">#&gt; Chain 1:                2.98254 seconds (Sampling)</span>
+<span class="co">#&gt; Chain 1:                5.57437 seconds (Total)</span>
 <span class="co">#&gt; Chain 1: </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; SAMPLING FOR MODEL '28c89f5948288d3bb37fc72d345573dc' NOW (CHAIN 2).</span>
 <span class="co">#&gt; Chain 2: </span>
-<span class="co">#&gt; Chain 2: Gradient evaluation took 5.6e-05 seconds</span>
-<span class="co">#&gt; Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.56 seconds.</span>
+<span class="co">#&gt; Chain 2: Gradient evaluation took 5.5e-05 seconds</span>
+<span class="co">#&gt; Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.55 seconds.</span>
 <span class="co">#&gt; Chain 2: Adjust your expectations accordingly!</span>
 <span class="co">#&gt; Chain 2: </span>
 <span class="co">#&gt; Chain 2: </span>
@@ -316,15 +316,15 @@ m(x)= a_1 \exp{[ \alpha_1 x ]} + a_2 \exp{[ -\alpha_2 (x - \mu_2) - \exp{ [ -\la
 <span class="co">#&gt; Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)</span>
 <span class="co">#&gt; Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)</span>
 <span class="co">#&gt; Chain 2: </span>
-<span class="co">#&gt; Chain 2:  Elapsed Time: 2.49384 seconds (Warm-up)</span>
-<span class="co">#&gt; Chain 2:                2.01021 seconds (Sampling)</span>
-<span class="co">#&gt; Chain 2:                4.50405 seconds (Total)</span>
+<span class="co">#&gt; Chain 2:  Elapsed Time: 2.49316 seconds (Warm-up)</span>
+<span class="co">#&gt; Chain 2:                2.01007 seconds (Sampling)</span>
+<span class="co">#&gt; Chain 2:                4.50323 seconds (Total)</span>
 <span class="co">#&gt; Chain 2: </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; SAMPLING FOR MODEL '28c89f5948288d3bb37fc72d345573dc' NOW (CHAIN 3).</span>
 <span class="co">#&gt; Chain 3: </span>
-<span class="co">#&gt; Chain 3: Gradient evaluation took 5.5e-05 seconds</span>
-<span class="co">#&gt; Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.55 seconds.</span>
+<span class="co">#&gt; Chain 3: Gradient evaluation took 5.3e-05 seconds</span>
+<span class="co">#&gt; Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.53 seconds.</span>
 <span class="co">#&gt; Chain 3: Adjust your expectations accordingly!</span>
 <span class="co">#&gt; Chain 3: </span>
 <span class="co">#&gt; Chain 3: </span>
@@ -341,15 +341,15 @@ m(x)= a_1 \exp{[ \alpha_1 x ]} + a_2 \exp{[ -\alpha_2 (x - \mu_2) - \exp{ [ -\la
 <span class="co">#&gt; Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)</span>
 <span class="co">#&gt; Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)</span>
 <span class="co">#&gt; Chain 3: </span>
-<span class="co">#&gt; Chain 3:  Elapsed Time: 2.41599 seconds (Warm-up)</span>
-<span class="co">#&gt; Chain 3:                1.83788 seconds (Sampling)</span>
-<span class="co">#&gt; Chain 3:                4.25387 seconds (Total)</span>
+<span class="co">#&gt; Chain 3:  Elapsed Time: 2.35704 seconds (Warm-up)</span>
+<span class="co">#&gt; Chain 3:                1.78459 seconds (Sampling)</span>
+<span class="co">#&gt; Chain 3:                4.14163 seconds (Total)</span>
 <span class="co">#&gt; Chain 3: </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; SAMPLING FOR MODEL '28c89f5948288d3bb37fc72d345573dc' NOW (CHAIN 4).</span>
 <span class="co">#&gt; Chain 4: </span>
-<span class="co">#&gt; Chain 4: Gradient evaluation took 5.5e-05 seconds</span>
-<span class="co">#&gt; Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.55 seconds.</span>
+<span class="co">#&gt; Chain 4: Gradient evaluation took 5.2e-05 seconds</span>
+<span class="co">#&gt; Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.52 seconds.</span>
 <span class="co">#&gt; Chain 4: Adjust your expectations accordingly!</span>
 <span class="co">#&gt; Chain 4: </span>
 <span class="co">#&gt; Chain 4: </span>
@@ -366,9 +366,9 @@ m(x)= a_1 \exp{[ \alpha_1 x ]} + a_2 \exp{[ -\alpha_2 (x - \mu_2) - \exp{ [ -\la
 <span class="co">#&gt; Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)</span>
 <span class="co">#&gt; Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)</span>
 <span class="co">#&gt; Chain 4: </span>
-<span class="co">#&gt; Chain 4:  Elapsed Time: 2.29068 seconds (Warm-up)</span>
-<span class="co">#&gt; Chain 4:                2.2371 seconds (Sampling)</span>
-<span class="co">#&gt; Chain 4:                4.52778 seconds (Total)</span>
+<span class="co">#&gt; Chain 4:  Elapsed Time: 2.25527 seconds (Warm-up)</span>
+<span class="co">#&gt; Chain 4:                2.24012 seconds (Sampling)</span>
+<span class="co">#&gt; Chain 4:                4.49539 seconds (Total)</span>
 <span class="co">#&gt; Chain 4:</span></code></pre></div>
 <p>The <code>mig_estimate_rc</code> function also allows for addition arguments that are related to the Stan model. In the example above, the values listed for <code>chains</code>, <code>iter</code>, <code>adapt_delta</code> and <code>max_treedepth</code> are the default values, so need have not been specified. However, depending on the context, it may make sense to increase the value of each of these components to ensure convergence. More details about these arguments can be found in the <code>R</code> help files for <code><a href="https://mc-stan.org/rstan/reference/stan.html">rstan::stan</a></code>, and also by referring to the <a href="https://mc-stan.org/users/documentation/">Stan documentation</a>.</p>
 <p>The resulting <code>rc_res</code> object is shown below. The <code>pars_df</code> shows the median estimate and lower and upper bound of a 95% credible interval for the Rogers-Castro parameters. In this example, the working age peak was estimated to be at 25.3 years (95% CI: [23.5, 27.2]).</p>
