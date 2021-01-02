@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate survival curve from censuses spaced 10 years apart. — surv10 • DemoTools</title>
+<title>Extract SRB estimates from WPP2019 — downloadSRB • DemoTools</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Estimate survival curve from censuses spaced 10 years apart. — surv10" />
-<meta property="og:description" content="This function reproduces calculations through column H of CENSUR~1.XLS by Griff Feeney. Censuses are assumed to be spaced 10 years apart and population counts for both censuses in 5-year age groups. The staggered ratio of these approximates lifetable function npx =1-nqx, i.e. probability of surviving between age x and age x+n. The cumulative product of this approximates the survival function lx." />
+<meta property="og:title" content="Extract SRB estimates from WPP2019 — downloadSRB" />
+<meta property="og:description" content="We use the WPP2019_births dataset from DemoToolsData for the sex ratio at birth. Births from WPP 2019 were graduates to single year totals." />
 <meta property="og:image" content="https://timriffe.github.io/DemoTools/logo.png" />
 
 
@@ -153,48 +153,38 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate survival curve from censuses spaced 10 years apart.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/timriffe/DemoTools/blob/master/R/CENSUR.R'><code>R/CENSUR.R</code></a></small>
-    <div class="hidden name"><code>surv10.Rd</code></div>
+    <h1>Extract SRB estimates from WPP2019</h1>
+    <small class="dont-index">Source: <a href='https://github.com/timriffe/DemoTools/blob/master/R/basepop.R'><code>R/basepop.R</code></a></small>
+    <div class="hidden name"><code>downloadSRB.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function reproduces calculations through column H of <code>CENSUR~1.XLS</code> by Griff Feeney. Censuses are assumed to be spaced 10 years apart and population counts for both censuses in 5-year age groups. The staggered ratio of these approximates lifetable function npx =1-nqx, i.e. probability of surviving between age x and age x+n. The cumulative product of this approximates the survival function lx.</p>
+    <p>We use the <code>WPP2019_births</code> dataset from <code>DemoToolsData</code> for the sex ratio at birth. Births from WPP 2019 were graduates to single year totals.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>surv10</span><span class='op'>(</span><span class='va'>pop1</span>, <span class='va'>pop2</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>downloadSRB</span><span class='op'>(</span><span class='va'>SRB</span>, <span class='va'>country</span>, <span class='va'>DatesOut</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>pop1</th>
-      <td><p>numeric. Vector of population counts in 5-year age groups of census 1.</p></td>
+      <th>SRB</th>
+      <td><p>sex ratio at birth. Either <code>NULL</code>, a scalar to assume constant, or a vector of length 3, assumed.</p></td>
     </tr>
     <tr>
-      <th>pop2</th>
-      <td><p>numeric. Vector of population counts in 5-year age groups of census 2.</p></td>
+      <th>country</th>
+      <td><p>character country name available UN Pop Div <code>LocName</code> set</p></td>
+    </tr>
+    <tr>
+      <th>DatesOut</th>
+      <td><p>numeric vector of three decimal dates produced by <code>basepop_ive()</code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Survival function lx as a numeric vector with radix 1.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <p>numeric vector with three SRB estimates</p>
 
-    <p>Checking for census spacing of 10 years must happen prior to this function.
-Also, we assume the open age group has already been trimmed off.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># 1960 vs 1970 pops</span>
-<span class='va'>pop1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3831870</span>,<span class='fl'>4502304</span>,<span class='fl'>5397061</span>,<span class='fl'>4630775</span>,<span class='fl'>4193184</span>,<span class='fl'>4114704</span>,<span class='fl'>3770907</span>,<span class='fl'>3274822</span>,
-    <span class='fl'>2744786</span>,<span class='fl'>2559755</span>,<span class='fl'>2160716</span>,<span class='fl'>1839025</span>,<span class='fl'>1494043</span>,<span class='fl'>1133409</span>,<span class='fl'>870238</span>,<span class='fl'>577972</span>,<span class='fl'>313781</span><span class='op'>)</span>
-<span class='va'>pop2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4292503</span>,<span class='fl'>3988292</span>,<span class='fl'>3852101</span>,<span class='fl'>4492096</span>,<span class='fl'>5347327</span>,<span class='fl'>4571868</span>,<span class='fl'>4190340</span>,<span class='fl'>4085338</span>,
-    <span class='fl'>3674127</span>,<span class='fl'>3198934</span>,<span class='fl'>2648360</span>,<span class='fl'>2382691</span>,<span class='fl'>1970485</span>,<span class='fl'>1584699</span>,<span class='fl'>1172155</span>,<span class='fl'>736258</span>,<span class='fl'>408191</span><span class='op'>)</span>
-<span class='fu'>surv10</span><span class='op'>(</span><span class='va'>pop1</span>,<span class='va'>pop2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] 1.0000000 1.0026398 1.0052797 1.0003666 0.9960160 0.9876411 0.9953405
-#&gt;  [8] 0.9805925 0.9697951 0.9578691 0.9357256 0.8916111 0.8533437 0.7683067
-#&gt; [15] 0.6694928 0.4990890 0.3140301</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
