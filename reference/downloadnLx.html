@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>detect ages from names of vector(s) — names2age • DemoTools</title>
+<title>Extract Lx estimates from WPP2019 — downloadnLx • DemoTools</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="detect ages from names of vector(s) — names2age" />
-<meta property="og:description" content="Often as a shorthand we pull lower age bounds from the names of a vector. This modulates that action, and allows for giving several vectors to check for names." />
+<meta property="og:title" content="Extract Lx estimates from WPP2019 — downloadnLx" />
+<meta property="og:description" content="We use the FetchLifeTableWpp2019 function of the fertestr to extract Lx from wpp2019, interpolated to an exact date." />
 <meta property="og:image" content="https://timriffe.github.io/DemoTools/logo.png" />
 
 
@@ -153,32 +153,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>detect ages from names of vector(s)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/timriffe/DemoTools/blob/master/R/utilsAge.R'><code>R/utilsAge.R</code></a></small>
-    <div class="hidden name"><code>names2age.Rd</code></div>
+    <h1>Extract Lx estimates from WPP2019</h1>
+    <small class="dont-index">Source: <a href='https://github.com/timriffe/DemoTools/blob/master/R/basepop.R'><code>R/basepop.R</code></a></small>
+    <div class="hidden name"><code>downloadnLx.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Often as a shorthand we pull lower age bounds from the names of a vector. This modulates that action, and allows for giving several vectors to check for names.</p>
+    <p>We use the <code>FetchLifeTableWpp2019</code> function of the <code>fertestr</code> to extract <code>Lx</code> from <code>wpp2019</code>, interpolated to an exact date.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>names2age</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>downloadnLx</span><span class='op'>(</span><span class='va'>nLx</span>, <span class='va'>country</span>, <span class='va'>gender</span>, <span class='va'>nLxDatesIn</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>one or more vectors of any class, which has/have a names attribute.</p></td>
+      <th>nLx</th>
+      <td><p>either <code>NULL</code> or a numeric vector of lifetable exposure. If it's the second then we just pass it back.</p></td>
+    </tr>
+    <tr>
+      <th>country</th>
+      <td><p>character country name available UN Pop Div <code>LocName</code> set</p></td>
+    </tr>
+    <tr>
+      <th>gender</th>
+      <td><p><code>"male"</code>, <code>"female"</code>, or <code>"both"</code></p></td>
+    </tr>
+    <tr>
+      <th>nLxDatesIn</th>
+      <td><p>numeric vector of three decimal dates produced by (or passed through) <code>basepop_ive()</code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>integer vector of ages (presumably).</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>If more than one vector is given, names are pulled from the first available named vector. All vectors must be of the same length. If no names are available on any vector, then <code>NA</code>s are returned. This clearly won't work if the names on the vector are of something else.</p>
+    <p>numeric matrix of <code>nLx</code> with <code><a href='https://rdrr.io/r/base/length.html'>length(nLxDatesIn)</a></code> and abrdiged ages in rows.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
