@@ -81,7 +81,7 @@ what is the error implied given the current $r$ and stationary standard?" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DemoTools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.11.01</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.11.02</span>
       </span>
     </div>
 
@@ -235,14 +235,14 @@ given population vector and stationary standard.</p>
 #&gt; <span class='message'>* NA -&gt; ...1</span></div><div class='input'><span class='va'>Age_nLx</span>    <span class='op'>&lt;-</span> <span class='fu'><a href='names2age.html'>names2age</a></span><span class='op'>(</span><span class='va'>nLx</span><span class='op'>)</span>
 <span class='va'>r</span>          <span class='op'>&lt;-</span> <span class='fl'>.01</span>
 
-<span class='fu'>OPAG_r_min</span><span class='op'>(</span><span class='va'>r</span>, 
-           <span class='va'>Pop_fit</span>, 
-           <span class='va'>Age_fit</span>, 
+<span class='fu'>OPAG_r_min</span><span class='op'>(</span><span class='va'>r</span>,
+           <span class='va'>Pop_fit</span>,
+           <span class='va'>Age_fit</span>,
            <span class='va'>AgeInt_fit</span>,
-           <span class='va'>nLx</span>, 
+           <span class='va'>nLx</span>,
            <span class='va'>Age_nLx</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 0.03613687</div><div class='input'>
-<span class='op'>(</span><span class='va'>r_opt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span><span class='op'>(</span><span class='va'>OPAG_r_min</span>, 
+<span class='op'>(</span><span class='va'>r_opt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/optimize.html'>optimize</a></span><span class='op'>(</span><span class='va'>OPAG_r_min</span>,
          Pop_fit <span class='op'>=</span> <span class='va'>Pop_fit</span>,
          Age_fit <span class='op'>=</span> <span class='va'>Age_fit</span>,
          AgeInt_fit <span class='op'>=</span> <span class='va'>AgeInt_fit</span>,
