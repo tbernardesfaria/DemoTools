@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DemoTools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.11.000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">01.11.01</span>
       </span>
     </div>
 
@@ -162,7 +162,7 @@
     <p>Smooth population counts in 5-year age groups.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>smooth_age_5_cf</span><span class='op'>(</span><span class='va'>Value</span>, <span class='va'>Age</span>, OAG <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>smooth_age_5_cf</span><span class='op'>(</span><span class='va'>Value</span>, <span class='va'>Age</span>, OAG <span class='op'>=</span> <span class='cn'>TRUE</span>, start_on <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,6 +178,10 @@
     <tr>
       <th>OAG</th>
       <td><p>logical. Whether or not the top age group is open. Default <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>start_on</th>
+      <td><p>integer. Either 0 or 5. Do we constrain decades starting on the 0s or 5s?</p></td>
     </tr>
     </table>
 
