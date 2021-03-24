@@ -40,7 +40,7 @@
 #' @param OAnew integer. Desired open age group (5-year ages only). Default \code{max(Age)}. If higher then rates are extrapolated.
 #' @param OAG logical. Whether or not the last element of \code{nMx} (or \code{nqx} or \code{lx}) is an open age group. Default \code{TRUE}.
 #' @param extrapLaw character. If extrapolating, which parametric mortality law should be invoked? Options include
-#'   \code{"Kannisto", "Kannisto_Makeham", "Makeham", "Gompertz", "GGompertz", "Beard",	"Beard_Makeham", "Quadratic"}. Default \code{"Kannisto"}. See details.
+#'   \code{"Kannisto", "Kannisto_Makeham", "Makeham", "Gompertz", "GGompertz", "Beard",	"Beard_Makeham", "Quadratic"}. Default \code{"Kannisto"} if the highest age is at least 90, otherwise `"makeham"`. See details.
 #' @inheritParams lt_a_closeout
 #' @export
 #' @return Lifetable in data.frame with columns
@@ -179,26 +179,43 @@ lt_abridged <- function(Deaths = NULL,
                   SRB = 1.05,
                   OAG = TRUE,
                   OAnew = max(Age),
-                  extrapLaw = "kannisto",
+                  extrapLaw = NULL,
                   extrapFrom = max(Age),
-                  extrapFit = Age[Age >= 60 & ifelse(OAG, Age < max(Age), TRUE)],
+                  extrapFit = NULL,
                   ...) {
   axmethod <- match.arg(axmethod, choices = c("pas","un"))
   Sex      <- match.arg(Sex, choices = c("m","f","b"))
   a0rule   <- match.arg(a0rule, choices = c("ak","cd"))
-  extrapLaw      <- match.arg(extrapLaw, choices = c("kannisto",
-                                                     "kannisto_makeham",
-                                                     "makeham",
-                                                     "gompertz",
-                                                     "ggompertz",
-                                                     "beard",
-                                                     "beard_makeham",
-                                                     "quadratic"
-  ))
+  if (!is.null(extrapLaw)){
+    extrapLaw      <- tolower(extrapLaw)
+    extrapLaw      <- match.arg(extrapLaw, choices = c("kannisto",
+                                                       "kannisto_makeham",
+                                                       "makeham",
+                                                       "gompertz",
+                                                       "ggompertz",
+                                                       "beard",
+                                                       "beard_makeham",
+                                                       "quadratic"
+    ))
+  } else {
+      extrapLaw <- ifelse(max(Age)>=90, "kannisto","makeham")
+  }
+
   region   <- match.arg(region, choices = c("w","n","s","e"))
   # ages must be abridged.
   stopifnot(is_abridged(Age))
 
+  if (is.null(extrapFit)){
+    maxAclosed <- ifelse(OAG, Age[which.max(Age)-1],max(Age))
+    if (maxAclosed < 85){
+      extrapFit  <- Age[Age >= (maxAclosed - 20) & Age <= maxAclosed]
+    } else {
+      extrapFit  <- Age[Age >= 60 & Age <= maxAclosed]
+    }
+  } else {
+    stopifnot(all(extrapFit %in% Age))
+  }
+  #cat("\nextrapFit:",paste(extrapFit,collapse = ", "),"\n")
   # now overwriting raw nMx is allowed by lowering this
   # arbitrary lower bound to accept the fitted model. Really
   # this functionality is intended for extrapolation and not
@@ -213,7 +230,7 @@ lt_abridged <- function(Deaths = NULL,
   qxflag   <- !is.null(nqx)
   # 1) if lx given but not qx:
   if ((!qxflag) & (!is.null(lx))) {
-    nqx          <- lt_id_l_d(lx) / lx
+    nqx          <- lt_id_l_d(lx) / lx # Calculating dx/lx
     nqx[1]       <- ifelse(imr_flag, IMR, nqx[1])
     qxflag       <- TRUE
   }
@@ -248,7 +265,11 @@ lt_abridged <- function(Deaths = NULL,
                       OAG = OAG,
                       mod = mod,
                       IMR = IMR,
-                      SRB = SRB)
+                      SRB = SRB,
+                      extrapLaw = extrapLaw,
+                      extrapFrom = extrapFrom,
+                      extrapFit = extrapFit
+                      )
   } else {
     nAx          <- lt_id_morq_a(
                       nMx = nMx,
@@ -261,7 +282,10 @@ lt_abridged <- function(Deaths = NULL,
                       OAG = OAG,
                       mod = mod,
                       IMR = IMR,
-                      SRB = SRB)
+                      SRB = SRB,
+                      extrapLaw = extrapLaw,
+                      extrapFrom = extrapFrom,
+                      extrapFit = extrapFit)
   }
   # TR, these nAx ought to turn out to be the same...
 
